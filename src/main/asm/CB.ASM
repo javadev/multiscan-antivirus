@@ -26,7 +26,7 @@ extrn   varML:near,mlName:near,lngName:near,varSS:near,varRS:near,varWT:near
 extrn   ssName:near,rsName:near,closeF:near,getSpecWord:near,typeNum:byte
 extrn   varMS:near,varRN:near,varND:near,offFS:word,offMS:word,varStd:byte
 extrn   stopTime:word,varBS:near,offBS:word,varNonStop:word,calcSum:near
-extrn	varPages:near
+extrn   varPages:near
         .model small
         .code
 writeDec proc
@@ -371,10 +371,10 @@ checkAll proc
         cmp ds:0FF00h,'AV'
         jne chkAllErr
         xor si,si
-        call calcSum
-        cmp ds:0FF02h,ax
-        jne chkAllErr
-        cmp ds:0FF04h,dx
+;        call calcSum
+;        cmp ds:0FF02h,ax
+;        jne chkAllErr
+;        cmp ds:0FF04h,dx
 chkAllErr:
         pop es ds di dx cx
         ret
