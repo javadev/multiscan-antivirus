@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.bitbucket.creditauto</groupId>
+    <groupId>com.github.multiscan-antivirus</groupId>
     <artifactId>multiscan</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version> 
@@ -42,11 +42,16 @@
                              <arg line="/c ${basedir}/tlink.exe @files"/>
                          </exec>
                          <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                             <arg line="/c ${basedir}/tlink.exe /t MSTSR.OBJ"/>
+                         </exec>
+                         <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
                              <arg line="/c ${basedir}/ucexe.exe mscan.exe"/>
                          </exec>
-                         <delete>
-                             <fileset dir="${basedir}/target/classes" includes="**/*.ASM **/*.OBJ **/FILES **/MSCAN.~XE"/>
-                         </delete>
+                         <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                             <arg line="/c ${basedir}/mscan.exe mscan.exe /v+"/>
+                         </exec>
+                         <copy  file="${basedir}/target/classes/MSCAN.EXE" tofile="${basedir}/MSCAN.EXE"/>
+                         <copy  file="${basedir}/target/classes/MSTSR.COM" tofile="${basedir}/MSTSR.COM"/>
                      </tasks>
                    </configuration>
                    <goals>
