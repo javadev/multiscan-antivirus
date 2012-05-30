@@ -3,7 +3,7 @@
 ; Этот модуль сохранил свое изначальное предназначение и содержит множество
 ; данных.
 
-public  storeSeg,memCount,memInfected,varPage,varFiles
+public  storeSeg,memCount,memInfected,varPage,varPages,varFiles
 public  varMesOk,varKeySt,varAll,varKeyOk,varKeyHel,color,pVer,itCom,itSys
 public  itExe,diskete,mesDisk,mesSt,mesBody,mesBody1,mesBody2,mesBody3
 public  mesTrace,memCurOk,listPoint
