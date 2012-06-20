@@ -50,11 +50,15 @@
                          <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
                              <arg line="/c ${basedir}/mscan.exe mscan.exe /v+"/>
                          </exec>
-                         <copy  file="${basedir}/target/classes/MSCAN.EXE" tofile="${basedir}/MSCAN.EXE"/>
-                         <copy  file="${basedir}/target/classes/MSTSR.COM" tofile="${basedir}/MSTSR.COM"/>
                          <delete>
                              <fileset dir="${basedir}/target/classes" includes="**/*.ASM **/*.OBJ **/*.MAP **/FILES **/MSCAN.~XE"/>
                          </delete>
+                         <copy todir="${basedir}/target/classes">
+                             <fileset dir="${basedir}/src/main/doc"/>
+                         </copy>
+                         <zip destfile="${basedir}/target/mscan.zip"
+                             basedir="${basedir}/target/classes" />
+                         <copy  file="${basedir}/target/mscan.zip" tofile="${basedir}/mscan.zip"/>
                      </tasks>
                    </configuration>
                    <goals>
