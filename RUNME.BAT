@@ -6,7 +6,9 @@ REM антивирус MultiScan
 
 ECHO ON
 cd src/main/asm
+copy ..\resources\*.OBJ .
 .\..\..\..\tasm *.asm /m9/z
 .\..\..\..\tlink @files
 .\..\..\..\ucexe mscan.exe
 mscan mscan.exe /v+
+copy MSCAN.EXE .\..\..\..\.
