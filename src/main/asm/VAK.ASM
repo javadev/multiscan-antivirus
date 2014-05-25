@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; àß≠†Á†´Ï≠Æ Ì‚Æ‚ ¨Æ§„´Ï §Æ°†¢´Ô´/„§†´Ô´ ¢†™Ê„≠„. äÆ•-Á•£Æ °Î´Æ §Æ°†¢´•≠Æ
+; –ò–∑–Ω–∞—á–∞–ª—å–Ω–æ —ç—Ç–æ—Ç –º–æ–¥—É–ª—å –¥–æ–±–∞–≤–ª—è–ª/—É–¥–∞–ª—è–ª –≤–∞–∫—Ü—É–Ω—É. –ö–æ–µ-—á–µ–≥–æ –±—ã–ª–æ –¥–æ–±–∞–≤–ª–µ–Ω–æ
 ;
 
 public  checkVak,delIt,mesDelV,mesAnti,mesVacOk,mesOver,mesWhoO,mesOverOk
@@ -54,7 +54,7 @@ vacOK:
         call printEng
         call print0D0A1
 exitVac1:
-        clc             ; „¶• ß†È®È•≠
+        clc             ; —É–∂–µ –∑–∞—â–∏—â–µ–Ω
         jmp short exitVac
 setVak:
         call checkExtV
@@ -70,7 +70,7 @@ vacBack:
         call doReadVak
         jc exitVac1
         call checkAntiB
-        jne exitVac1    ; ≠• °Î´ ß†È®È•≠
+        jne exitVac1    ; –Ω–µ –±—ã–ª –∑–∞—â–∏—â–µ–Ω
         push ax cx dx si
         lea dx,delIt
         call who
@@ -181,7 +181,7 @@ endChMs0:
         xchg ax,bx
         mov ax,5700h
         int 21h
-        mov ax,date     ; ax ‚•™„È•£Æ
+        mov ax,date     ; ax —Ç–µ–∫—É—â–µ–≥–æ
         cmp dx,ax
         ja overIt
         stc
@@ -512,14 +512,14 @@ vacTitle db 24 dup (36)
 
 mesWho  equ $-begVac
 
-mesTurbo db ' (c) MultiScan. Ç≠®¨†≠®• !!! ù‚„ Ø‡Æ£‡†¨¨„ ®ß¨•≠®´ ¢®‡„·.',13,10
-         db 'éØ‡•§•´®‚• §†´Ï≠•©Ë®• §•©·‚¢®Ô :',13,10
-         db ' C - ¢Î´•Á®‚Ï ‰†©´;',13,10
-         db ' N - ≠• Ø‡Æ®ß¢Æ§®‚Ï ´•Á•≠®•;',13,10
-         db ' Q - ≠•¨•§´•≠≠Î© ¢ÎÂÆ§ ®ß Ø‡Æ£‡†¨¨Î.',13,10,0
+mesTurbo db ' (c) MultiScan. –í–Ω–∏–º–∞–Ω–∏–µ !!! –≠—Ç—É –ø—Ä–æ–≥—Ä–∞–º–º—É –∏–∑–º–µ–Ω–∏–ª –≤–∏—Ä—É—Å.',13,10
+         db '–û–ø—Ä–µ–¥–µ–ª–∏—Ç–µ –¥–∞–ª—å–Ω–µ–π—à–∏–µ –¥–µ–π—Å—Ç–≤–∏—è :',13,10
+         db ' C - –≤—ã–ª–µ—á–∏—Ç—å —Ñ–∞–π–ª;',13,10
+         db ' N - –Ω–µ –ø—Ä–æ–∏–∑–≤–æ–¥–∏—Ç—å –ª–µ—á–µ–Ω–∏–µ;',13,10
+         db ' Q - –Ω–µ–º–µ–¥–ª–µ–Ω–Ω—ã–π –≤—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.',13,10,0
 
 mesWho1  equ $-begVac
-         db 'è•‡•ß†Ø„·‚®‚Ï ™Æ¨ØÏÓ‚•‡ (Ñ†-Enter / ç•‚-ESC) ?',13,10,0
+         db '–ü–µ—Ä–µ–∑–∞–ø—É—Å—Ç–∏—Ç—å –∫–æ–º–ø—å—é—Ç–µ—Ä (–î–∞-Enter / –ù–µ—Ç-ESC) ?',13,10,0
 
 offsetEntry equ $-vacBegin
 
@@ -722,25 +722,25 @@ firstLet        db 7,'COMMAND',3,'DRW',4,'AIDS',4,'MSAV',4,'TBAV'
                 db 4,'F-PR',4,'SCAN',4,'DRSO',4,'WIN.',0
 lastLet         db 3,'COM',3,'EXE',0
 msName          db 9,'MSCAN.EXE',9,'MSCAN.COM',0
-delIt           db 1,10,' ·≠Ô‚Ï ß†È®‚„',0
+delIt           db 1,10,' —Å–Ω—è—Ç—å –∑–∞—â–∏—Ç—É',0
                 db 1,10,' delete vaccine',0
                 dw 0EE01h,delIt
-mesDelV         db ' Æ·¢Æ°Æ¶§•≠ Æ‚ ¢†™Ê®≠Î ... ',0
+mesDelV         db ' –æ—Å–≤–æ–±–æ–∂–¥–µ–Ω –æ—Ç –≤–∞–∫—Ü–∏–Ω—ã ... ',0
                 db ' free of vaccine.',0
                 dw 0EE01h,mesDelV
-mesAnti         db ' °Î´',0
+mesAnti         db ' –±—ã–ª',0
                 db ' was',0
                 dw 0EE01h,mesAnti
-mesVacOk        db ' ß†È®È•≠ ¢†™Ê®≠Æ© ... ',0
+mesVacOk        db ' –∑–∞—â–∏—â–µ–Ω –≤–∞–∫—Ü–∏–Ω–æ–π ... ',0
                 db ' protected with vaccine.',0
                 dw 0EE01h,mesVacOk
-mesOver         db ' ',12,'Ì‚† ¢•‡·®Ô „·‚†‡•´†.',0
+mesOver         db ' ',12,'—ç—Ç–∞ –≤–µ—Ä—Å–∏—è —É—Å—Ç–∞—Ä–µ–ª–∞.',0
                 db ' ',12,'it version to old.',0
                 dw 0EE01h,mesOver
-mesWhoO         db ' é°≠Æ¢®‚Ï',0
+mesWhoO         db ' –û–±–Ω–æ–≤–∏—Ç—å',0
                 db ' Overwrite',0
                 dw 0EE01h,mesWhoO
-mesOverOk       db ' é°≠Æ¢´•≠.',0
+mesOverOk       db ' –û–±–Ω–æ–≤–ª–µ–Ω.',0
                 db ' Rewrited.',0
                 dw 0EE01h,mesOverOk
 addvak          dw 20h,0E0EDh,0EF5Ah

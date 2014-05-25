@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; �祭� ��ᥫ� ����� - ��ॢ��稢��� ��࠭.
+; Очень веселый модуль - переворачивает экран.
 
 video_mode      equ     49h
 video_columns   equ     4Ah
@@ -234,9 +234,9 @@ loc_025A:
                 mov     cx,[bp+10h]
                 jmp     short loc_0287
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 invertScreen    proc    near
                 push    si
@@ -289,9 +289,9 @@ loc_0296:
 invertScreen    endp
 
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 sub_02D1        proc    near
                 mov     al,ds:video_page
@@ -300,7 +300,7 @@ sub_02D1        proc    near
                 mov     bx,ax
                 mov     dx,ds:data_0050_e[bx]
 
-;���� External Entry into Subroutine ��������������������������������������
+;▀▀▀▀ External Entry into Subroutine ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 
 sub_02DD:
                 mov     ah,ds:video_rows
@@ -315,7 +315,7 @@ sub_02DD:
                 add     cx,2000h
                 mov     bx,0E0Fh
 
-;���� External Entry into Subroutine ��������������������������������������
+;▀▀▀▀ External Entry into Subroutine ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 
 setUpPort:
 loc_02FB:
@@ -339,9 +339,9 @@ loc_ret_030D:
 sub_02D1        endp
 
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 setNewCursor    proc    near
                 mov     ax,ds:data_0060_e
@@ -355,9 +355,9 @@ setNewCursor    proc    near
 setNewCursor    endp
 
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 sub_0324        proc    near
                 mov     al,ds:video_pixels
@@ -370,9 +370,9 @@ sub_0324        proc    near
 sub_0324        endp
 
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 sub_0332        proc    near
                 test    byte ptr ds:video_options,1
@@ -419,9 +419,9 @@ outTab1toPort:
                 lea     si,portTable1
                 jmp     short loc_039A
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 outTabToPort    proc    near
                 lea     si,portTable2
@@ -432,7 +432,7 @@ loc_039A:
                 mov     cl,3
                 mov     dl,0CEh
 
-;���� External Entry into Subroutine ��������������������������������������
+;▀▀▀▀ External Entry into Subroutine ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 
 outToPort:
 
@@ -510,9 +510,9 @@ installFirst:
                                                 ;  set intrpt vector al to ds:dx
                 jmp     endInst
 
-;��������������������������������������������������������������������������
+;▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ;                              SUBROUTINE
-;��������������������������������������������������������������������������
+;▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 checkAdap       proc    near
                 push    ds

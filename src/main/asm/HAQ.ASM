@@ -1,7 +1,7 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ ¢Æ°È•‚-‚Æ ™Æ§Æ-Ì¨„´Ô‚Æ‡ · ¢ÎßÆ¢†¨® ™Æ§Æ-†≠†´®ß†‚Æ‡†.
-; éÁ•≠Ï ¨•§´•≠≠Î©. ü •£Æ Æ°Ôß†‚•´Ï≠Æ Ø•‡•§•´†Ó.
+; –≠—Ç–æ –≤–æ–±—â–µ—Ç-—Ç–æ –∫–æ–¥–æ-—ç–º—É–ª—è—Ç–æ—Ä —Å –≤—ã–∑–æ–≤–∞–º–∏ –∫–æ–¥–æ-–∞–Ω–∞–ª–∏–∑–∞—Ç–æ—Ä–∞.
+; –û—á–µ–Ω—å –º–µ–¥–ª–µ–Ω–Ω—ã–π. –Ø –µ–≥–æ –æ–±—è–∑–∞—Ç–µ–ª—å–Ω–æ –ø–µ—Ä–µ–¥–µ–ª–∞—é.
 
 public  ha,pushReg,setOpt1,checkRange
 public  doRead,optim,symExec,bPoint,countExec,viewCode
@@ -462,9 +462,9 @@ noOffset:
 endMake:
         or bp,bp
         jne noPref0
-        mov es,ss:regPrefix        ; ß†¨•≠®‚Ï es
+        mov es,ss:regPrefix        ; –∑–∞–º–µ–Ω–∏—Ç—å es
 noPref0:
-        pop ax                     ; §´Ô ·™Æ‡Æ·‚® ß§•·Ï ≠„¶•≠ ret
+        pop ax                     ; –¥–ª—è —Å–∫–æ—Ä–æ—Å—Ç–∏ –∑–¥–µ—Å—å –Ω—É–∂–µ–Ω ret
 
         test ah,00010000b
         jnz checkWrite
@@ -476,9 +476,9 @@ checkRead:
         cmp di,-1
         je badInstr1
 noChRead:
-        call checkAdrR          ; Á‚•≠®• ®ß 0-£Æ ·•£¨•≠‚†
+        call checkAdrR          ; —á—Ç–µ–Ω–∏–µ –∏–∑ 0-–≥–æ —Å–µ–≥–º–µ–Ω—Ç–∞
         jc setFalse
-        call fixRead            ; Á‚•≠®• ®ß baseSeg
+        call fixRead            ; —á—Ç–µ–Ω–∏–µ –∏–∑ baseSeg
         jc badInstr1
         mov ss:segRead,es
 cheRW:
@@ -507,9 +507,9 @@ checkWrite:
         cmp di,-1
         je badInstr
         call checkAdrW
-        jc setFalseW            ; ß†Ø®·Ï ¢ 0-© ·•£¨•≠‚
+        jc setFalseW            ; –∑–∞–ø–∏—Å—å –≤ 0-–π —Å–µ–≥–º–µ–Ω—Ç
         call fixWrite
-        jnc cheRW               ; ß†Ø®·Ï ¢ baseSeg
+        jnc cheRW               ; –∑–∞–ø–∏—Å—å –≤ baseSeg
 badInstr:
         mov byte ptr ss:varOpt,0
 badInstr1:
@@ -631,7 +631,7 @@ segReadOk1:
         ret
 checkJump:
         call skipAuto
-        cmp ax,60h      ; ¢ ax - ·•£¨•≠‚ Ø•p•ÂÆ§†
+        cmp ax,60h      ; –≤ ax - —Å–µ–≥–º–µ–Ω—Ç –ø–µp–µ—Ö–æ–¥–∞
         jae noChJ
         inc bx
         jz jBad1
@@ -1309,7 +1309,7 @@ setOpt1_:
         or  ax,ax
         je  treeEc2
         jns noIncz
-        cmp ss:varOpt,0   ; ¢ÎØÆ´≠Ô•¨Î© Æ°‡†‚≠Î© „·´Æ¢≠Î© Ø•‡•ÂÆ§
+        cmp ss:varOpt,0   ; –≤—ã–ø–æ–ª–Ω—è–µ–º—ã–π –æ–±—Ä–∞—Ç–Ω—ã–π —É—Å–ª–æ–≤–Ω—ã–π –ø–µ—Ä–µ—Ö–æ–¥
         jne runIt
         call checkSkipC
         je  treeEc2
@@ -1329,12 +1329,12 @@ optim:
         stosw
         stosw
         ret
-treeEc1:                        ; ≠•¢ÎØÆ´≠Ô•¨Î© ´Ó°Æ© „·´Æ¢≠Î© Ø•‡•ÂÆ§
+treeEc1:                        ; –Ω–µ–≤—ã–ø–æ–ª–Ω—è–µ–º—ã–π –ª—é–±–æ–π —É—Å–ª–æ–≤–Ω—ã–π –ø–µ—Ä–µ—Ö–æ–¥
         mov bx,si
         add bx,ax
         call setOpt1
 noIncz:
-        cmp ss:varOpt,0   ; ¢ÎØÆ´≠Ô•¨Î© Ø‡Ô¨Æ© „·´Æ¢≠Î© Ø•‡•ÂÆ§
+        cmp ss:varOpt,0   ; –≤—ã–ø–æ–ª–Ω—è–µ–º—ã–π –ø—Ä—è–º–æ–π —É—Å–ª–æ–≤–Ω—ã–π –ø–µ—Ä–µ—Ö–æ–¥
         je treeEc2
         push ss
         pop  es
@@ -1348,7 +1348,7 @@ noIncz:
         cmp ss:countTab,100
         jae treeEc2
         inc ss:countTab
-        stosw                   ; ß†ØÆ¨≠®‚Ï ≠•¢ÎØÆ´≠Ô•¨Î© †§‡•·
+        stosw                   ; –∑–∞–ø–æ–º–Ω–∏—Ç—å –Ω–µ–≤—ã–ø–æ–ª–Ω—è–µ–º—ã–π –∞–¥—Ä–µ—Å
 treeEc2:
         ret
 runIt:
@@ -2881,7 +2881,7 @@ regES           dw ?
 regFS           dw ?
 regGS           dw ?
 regPrefix       dw ?
-;--- Æ°È®• ‡•£®·‚‡Î
+;--- –æ–±—â–∏–µ —Ä–µ–≥–∏—Å—Ç—Ä—ã
 regAX           dw ?,?
 regCX           dw ?,?
 regDX           dw ?,?

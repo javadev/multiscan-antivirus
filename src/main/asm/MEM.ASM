@@ -1,7 +1,7 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; åÆ§„´Ï §´Ô Ø‡Æ¢•‡™® Ø†¨Ô‚®. å≠Æ£Æ §‡„£®Â ‰„≠™Ê®© °Î´Æ §Æ°†¢´•≠Æ.
-; ëÆ¢·•¨ ≠•§†¢≠Æ °Î´† ®·Ø‡†¢´•≠† ÆË®°™† Ø‡® ‡†°Æ‚• · win95,os/2.
+; –ú–æ–¥—É–ª—å –¥–ª—è –ø—Ä–æ–≤–µ—Ä–∫–∏ –ø–∞–º—è—Ç–∏. –ú–Ω–æ–≥–æ –¥—Ä—É–≥–∏—Ö —Ñ—É–Ω–∫—Ü–∏–π –±—ã–ª–æ –¥–æ–±–∞–≤–ª–µ–Ω–æ.
+; –°–æ–≤—Å–µ–º –Ω–µ–¥–∞–≤–Ω–æ –±—ã–ª–∞ –∏—Å–ø—Ä–∞–≤–ª–µ–Ω–∞ –æ—à–∏–±–∫–∞ –ø—Ä–∏ —Ä–∞–±–æ—Ç–µ —Å win95,os/2.
 
 public  traceMem,checkMCB,infMem,wasCur,mesStrCom,mesProg
 public  scanSpec,mesVirMem,scanChSum,scan2sum,mesKillmem,mesBlockOk
@@ -771,15 +771,15 @@ checkMCB proc
         je noCheckDrv
         cmp al,4
         sbb si,si
-        mov ah,52h                      ;á†Ø‡†Ë®¢†•¨ †§§‡•· DOS List of
-        int 21h                         ;List ¢ ‡•£®·‚‡Î ES:BX
+        mov ah,52h                      ;–ó–∞–ø—Ä–∞—à–∏–≤–∞–µ–º –∞–¥–¥—Ä–µ—Å DOS List of
+        int 21h                         ;List –≤ —Ä–µ–≥–∏—Å—Ç—Ä—ã ES:BX
         push es:[bx-2]
-        lds bx,es:[bx]                  ;DS:BX „™†ßÎ¢†•‚ ≠† Ø•‡¢Î© DPB
+        lds bx,es:[bx]                  ;DS:BX —É–∫–∞–∑—ã–≤–∞–µ—Ç –Ω–∞ –ø–µ—Ä–≤—ã–π DPB
                                         ;( Drive Parametr Block)
 search:
-        mov ax,[bx+si+15h]              ;á†Ø‡Æ· ·•£¨•≠‚† §‡†©¢•‡†
-        les di,dword ptr ds:[bx+si+13h] ;ëÆÂ‡†≠Ô•¨ ·¨•È•≠®• §‡†©¢•‡†
-                                        ;Ä§‡•· Æ‡®£•≠†´Ï≠Æ£Æ §‡†©¢•‡† ¢ ES:DI
+        mov ax,[bx+si+15h]              ;–ó–∞–ø—Ä–æ—Å —Å–µ–≥–º–µ–Ω—Ç–∞ –¥—Ä–∞–π–≤–µ—Ä–∞
+        les di,dword ptr ds:[bx+si+13h] ;–°–æ—Ö—Ä–∞–Ω—è–µ–º —Å–º–µ—â–µ–Ω–∏–µ –¥—Ä–∞–π–≤–µ—Ä–∞
+                                        ;–ê–¥—Ä–µ—Å –æ—Ä–∏–≥–µ–Ω–∞–ª—å–Ω–æ–≥–æ –¥—Ä–∞–π–≤–µ—Ä–∞ –≤ ES:DI
         mov di,word ptr es:[di+6]
         push bx si ds
         push ss
@@ -792,11 +792,11 @@ search:
 notTestOff:
         pop ds si bx
 next:
-        lds bx,[bx+si+19h]              ;ÇßÔ‚Ï ·´•§„ÓÈ®© §‡†©¢•‡
+        lds bx,[bx+si+19h]              ;–í–∑—è—Ç—å —Å–ª–µ–¥—É—é—â–∏–π –¥—Ä–∞–π–≤–µ—Ä
         or bx,bx
         je endSearch
-        cmp bx,-1                       ;ù‚Æ ØÆ·´•§≠®© §‡†©¢•‡?
-        jne search                      ;ù·´® ≠•‚ Ø‡Æ¢•‡®‚Ï •£Æ
+        cmp bx,-1                       ;–≠—Ç–æ –ø–æ—Å–ª–µ–¥–Ω–∏–π –¥—Ä–∞–π–≤–µ—Ä?
+        jne search                      ;–≠—Å–ª–∏ –Ω–µ—Ç –ø—Ä–æ–≤–µ—Ä–∏—Ç—å –µ–≥–æ
 
 endSearch:
         pop  es
@@ -897,27 +897,27 @@ scanMem1 proc
         .data
 tableBadInst    db 3,80h,0FCh,3Dh,3,80h,0FDh,3Dh,3,80h,0FCh,4Bh,3,03Dh,0,4Bh
                 db 4,81h,0F9h,0,4Bh,4,81h,0FAh,80h,0,0
-infMem          db ' - Æ°≠†‡„¶•≠ ¢®‡„· ',0
+infMem          db ' - –æ–±–Ω–∞—Ä—É–∂–µ–Ω –≤–∏—Ä—É—Å ',0
                 db ' - virus found ',0
                 dw 0EE01h,infMem
-wasCur          db ' - °Î´ Æ°•ß¢‡•¶•≠ ¢®‡„· ',0
+wasCur          db ' - –±—ã–ª –æ–±–µ–∑–≤—Ä–µ–∂–µ–Ω –≤–∏—Ä—É—Å ',0
                 db ' - virus was found ',0
                 dw 0EE01h,wasCur
-mesVirMem       db ' - ¢Æß¨Æ¶≠Æ Ø‡®·„‚·‚¢®• å†™‚®¢≠Æ£Æ ‡†ß®§•≠‚≠Æ£Æ ¢®‡„·†'
+mesVirMem       db ' - –≤–æ–∑–º–æ–∂–Ω–æ –ø—Ä–∏—Å—É—Ç—Å—Ç–≤–∏–µ –ú–∞–∫—Ç–∏–≤–Ω–æ–≥–æ —Ä–∞–∑–∏–¥–µ–Ω—Ç–Ω–æ–≥–æ –≤–∏—Ä—É—Å–∞'
                 db ' !!!',10,0
-                db ' - åactive rezident virus my be present into memory'
+                db ' - –úactive rezident virus my be present into memory'
                 db ' !!!',10,0
                 dw 0EE01h,mesVirMem
-mesStrCom       db ' - ØÆ§Æß‡®‚•´Ï≠†Ô ™Æ¨†≠§†.',10,0
+mesStrCom       db ' - –ø–æ–¥–æ–∑—Ä–∏—Ç–µ–ª—å–Ω–∞—è –∫–æ–º–∞–Ω–¥–∞.',10,0
                 db ' - strange command.',10,0
                 dw 0EE01h,mesStrCom
-mesProg         db ' - ß†£‡„¶•≠† Ø‡Æ£‡†¨¨† ',0
+mesProg         db ' - –∑–∞–≥—Ä—É–∂–µ–Ω–∞ –ø—Ä–æ–≥—Ä–∞–º–º–∞ ',0
                 db ' - loaded program ',0
                 dw 0EE01h,mesProg
-mesKillmem      db ' á†°´Æ™®‡Æ¢†‚Ï „Á†·‚Æ™ Ø†¨Ô‚®',0
+mesKillmem      db ' –ó–∞–±–ª–æ–∫–∏—Ä–æ–≤–∞—Ç—å —É—á–∞—Å—Ç–æ–∫ –ø–∞–º—è—Ç–∏',0
                 db ' Blocked memory cell',0
                 dw 0EE01h,mesKillmem
-mesBlockOk      db 1,13,' áÄÅãéäàêéÇÄç.',10,0
+mesBlockOk      db 1,13,' –ó–ê–ë–õ–û–ö–ò–†–û–í–ê–ù.',10,0
                 db 1,13,' BLOCKED.',10,0
                 dw 0EE01h,mesBlockOk
 saveOff         dw -1

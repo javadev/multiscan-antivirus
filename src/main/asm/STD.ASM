@@ -1,7 +1,7 @@
-
+@
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; á§•·Ï ®È„‚·Ô ® ´•Á†‚·Ô ‰†©´Æ¢Î• ¢®‡„·Î. ë™Æ´Ï™Æ ß§•·Ï ™†Ë®. åÆ¶•‚
-; ≠†Ø®·†‚Ï ≠Æ¢Î© †≠‚®¢®‡„· ?
+; –ó–¥–µ—Å—å –∏—â—É—Ç—Å—è –∏ –ª–µ—á–∞—Ç—Å—è —Ñ–∞–π–ª–æ–≤—ã–µ –≤–∏—Ä—É—Å—ã. –°–∫–æ–ª—å–∫–æ –∑–¥–µ—Å—å –∫–∞—à–∏. –ú–æ–∂–µ—Ç
+; –Ω–∞–ø–∏—Å–∞—Ç—å –Ω–æ–≤—ã–π –∞–Ω—Ç–∏–≤–∏—Ä—É—Å ?
 
 public  cureStd,mesWar,mesModInf,iniPos,printNameVir
 public  mesWar,mesEkz,mesDelete,mesDelOk,mesModInf,mesPack,mesCoPr
@@ -541,7 +541,7 @@ clearVar proc
         mov lenCr,ax
         mov countErr,al
         mov maskHa,al
-        mov modifySi,ax         ; ß†°Î‚Ï Æ ¨Æ§®‰®™†Ê®ÔÂ
+        mov modifySi,ax         ; –∑–∞–±—ã—Ç—å –æ –º–æ–¥–∏—Ñ–∏–∫–∞—Ü–∏—è—Ö
         pop ax
         ret
         endp
@@ -549,7 +549,7 @@ deleteFile proc
         push dx
         inc virFoundF
         mov color,12
-        lea dx,mesEkz           ; ·ÆÆ°È•≠®• Ì™ß•¨Ø´Ô‡
+        lea dx,mesEkz           ; —Å–æ–æ–±—â–µ–Ω–∏–µ —ç–∫–∑–µ–º–ø–ª—è—Ä
         call printEng
         call printNameVir
         xor dx,dx
@@ -570,7 +570,7 @@ printPackStd proc
         or ax,ax
         je printPack
         mov color,10
-        lea dx,mesCoPr          ; ·ÆÆ°È•≠®• : ß†È®È•≠
+        lea dx,mesCoPr          ; —Å–æ–æ–±—â–µ–Ω–∏–µ : –∑–∞—â–∏—â–µ–Ω
         dec ax
         jne printPack
         inc virFoundF
@@ -594,7 +594,7 @@ printInfect proc
         inc countErr
         inc infbadCount         ;st
         mov color,12
-        lea dx,mesWar           ; „™†ß†‚Ï ≠† ·‚‡Æ™„ : °Æ´•≠
+        lea dx,mesWar           ; —É–∫–∞–∑–∞—Ç—å –Ω–∞ —Å—Ç—Ä–æ–∫—É : –±–æ–ª–µ–Ω
         call printEng
         call printNameVir
         call getLenWord
@@ -1249,7 +1249,7 @@ callProcAx proc
         jmp short endCall
 callFar:
         mov offSig,ax
-        call dword ptr offSig     ; †§‡•· ØÆ§Ø‡Æ£‡†¨¨Î ; gs
+        call dword ptr offSig     ; –∞–¥—Ä–µ—Å –ø–æ–¥–ø—Ä–æ–≥—Ä–∞–º–º—ã ; gs
 endCall:
         pop si
         ret
@@ -1425,17 +1425,17 @@ fillNameV proc
 nextVinf:
         push ax
         call getNameWord1
-        scasw           ; †§‡•· ®¨•≠®
+        scasw           ; –∞–¥—Ä–µ—Å –∏–º–µ–Ω–∏
         pop ax
         jne skipVI0
-        scasw           ; §´®≠†
+        scasw           ; –¥–ª–∏–Ω–∞
         je skip0len
         cmp word ptr es:[di-2],0
         jne skipVI1
         mov es:[di-2],ax
 skip0len:
         xchg dx,ax
-        scasw           ; †‚‡®°„‚Î
+        scasw           ; –∞—Ç—Ä–∏–±—É—Ç—ã
         xchg dx,ax
         jne skipVI
         inc word ptr es:[di]
@@ -1533,37 +1533,37 @@ veryBad:
 saveSig         db 0
 strPath         db 'PATH=C:\;',0
 lenStP          equ $-strPath
-mesWar          db ' - °Æ´•≠ ',0
+mesWar          db ' - –±–æ–ª–µ–Ω ',0
                 db ' - infected with ',0
                 dw 0EE01h,mesWar
-mesEkz          db ' - Ì™ß•¨Ø´Ô‡ ¢®‡„·† ',0
+mesEkz          db ' - —ç–∫–∑–µ–º–ø–ª—è—Ä –≤–∏—Ä—É—Å–∞ ',0
                 db ' - contain the virus ',0
                 dw 0EE01h,mesEkz
-mesDelete       db ' ë‚•‡•‚Ï',0
+mesDelete       db ' –°—Ç–µ—Ä–µ—Ç—å',0
                 db ' Erase',0
                 dw 0EE01h,mesDelete
-mesDelOk        db ' ìÑÄãÖç.',0
+mesDelOk        db ' –£–î–ê–õ–ï–ù.',0
                 db ' DELETED.',0
                 dw 0EE01h,mesDelOk
-mesRename       db 1,12,' è•p•®¨•≠Æ¢†‚Ï',0
+mesRename       db 1,12,' –ü–µp–µ–∏–º–µ–Ω–æ–≤–∞—Ç—å',0
                 db 1,12,' Rename file',0
                 dw 0EE01h,mesRename
-mesRenOk        db ' è•p•®¨•≠Æ¢†≠.',0
+mesRenOk        db ' –ü–µp–µ–∏–º–µ–Ω–æ–≤–∞–Ω.',0
                 db ' Renamed.',0
                 dw 0EE01h,mesRenOk
-mesModInf       db ' - °Æ´•≠ ¨Æ§®‰®™†Ê®•© ',0
+mesModInf       db ' - –±–æ–ª–µ–Ω –º–æ–¥–∏—Ñ–∏–∫–∞—Ü–∏–µ–π ',0
                 db ' - infected with modify ',0
                 dw 0EE01h,mesModInf
-mesPack         db 1,9,' - „Ø†™Æ¢†≠ ',0
+mesPack         db 1,9,' - —É–ø–∞–∫–æ–≤–∞–Ω ',0
                 db 1,9,' - packed ',0
                 dw 0EE01h,mesPack
-mesCoPr         db 1,10,' - ß†È®È•≠ ',0
+mesCoPr         db 1,10,' - –∑–∞—â–∏—â–µ–Ω ',0
                 db 1,10,' - protected with ',0
                 dw 0EE01h,mesCoPr
-mesStand        db ' - ·‚†≠§†‡‚≠Î© ‰†©´ ',0
+mesStand        db ' - —Å—Ç–∞–Ω–¥–∞—Ä—Ç–Ω—ã–π —Ñ–∞–π–ª ',0
                 db ' - standart file - ',0
                 dw 0EE01h,mesStand
-mesNoCure       db ' ã•Á•≠®• çÖÇéáåéÜçé !',10,0
+mesNoCure       db ' –õ–µ—á–µ–Ω–∏–µ –ù–ï–í–û–ó–ú–û–ñ–ù–û !',10,0
                 db ' Repair IMPOSIBLE !',10,0
                 dw 0EE01h,mesNoCure
 nameNew         db 'NewVirus('

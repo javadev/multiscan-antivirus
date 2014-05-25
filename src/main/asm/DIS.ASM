@@ -1,7 +1,7 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; â® ¤¨§ áá¥¬¡«¥à. ‘¨«ì­® ­¥¤®¤¥« ­ë© ¨ á ®è¨¡ª®© (¥á«¨ ¢á¥ ­ ç¨­ ¥âáï á
-; 0-£®  ¤à¥á )
+; Ğ­Ñ‚Ğ¾ Ğ´Ğ¸Ğ·Ğ°ÑÑĞµĞ¼Ğ±Ğ»ĞµÑ€. Ğ¡Ğ¸Ğ»ÑŒĞ½Ğ¾ Ğ½ĞµĞ´Ğ¾Ğ´ĞµĞ»Ğ°Ğ½Ñ‹Ğ¹ Ğ¸ Ñ Ğ¾ÑˆĞ¸Ğ±ĞºĞ¾Ğ¹ (ĞµÑĞ»Ğ¸ Ğ²ÑĞµ Ğ½Ğ°Ñ‡Ğ¸Ğ½Ğ°ĞµÑ‚ÑÑ Ñ
+; 0-Ğ³Ğ¾ Ğ°Ğ´Ñ€ĞµÑĞ°)
 
 public  outASM,stopAs,oldCom,lenBuf,lenStr,fillInst
 public  storeScr,scrollSt,outScr,redrawAsm,storeOutScr
@@ -133,7 +133,7 @@ outAsmWin proc
         mov es,ax
         lea si,outBuf
         xor dx,dx
-        mov cx,lenStr           ; ª®«-¢® «¨­¨©
+        mov cx,lenStr           ; ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ»Ğ¸Ğ½Ğ¸Ğ¹
         add cx,5
         mov di,varLeft
 outField:
@@ -196,7 +196,7 @@ getPoint proc
         push ax cx si di
         mov ax,regIP
         lea di,listPoint
-        mov cx,lenStr           ; ¨é¥¬ ª®¬ ­¤ã
+        mov cx,lenStr           ; Ğ¸Ñ‰ĞµĞ¼ ĞºĞ¾Ğ¼Ğ°Ğ½Ğ´Ñƒ
         push di
 findCom:                ;*
         scasw
@@ -205,7 +205,7 @@ findCom:                ;*
         loop findCom    ;*
         pop di
         dec ax
-        mov cx,lenStr           ; ¨é¥¬ ¯à¥ä¨ªá
+        mov cx,lenStr           ; Ğ¸Ñ‰ĞµĞ¼ Ğ¿Ñ€ĞµÑ„Ğ¸ĞºÑ
 findPref:
         scasw
         je checkF
@@ -361,9 +361,9 @@ fillInst1:
         push ss
         pop  es
         push regIP1
-        mov pointB,offset outCom        ; ¨­¨æ¨¨à®¢ âì ãª § â¥«¨
+        mov pointB,offset outCom        ; Ğ¸Ğ½Ğ¸Ñ†Ğ¸Ğ¸Ñ€Ğ¾Ğ²Ğ°Ñ‚ÑŒ ÑƒĞºĞ°Ğ·Ğ°Ñ‚ĞµĞ»Ğ¸
         mov pointT,offset listPoint
-        mov cx,18               ; § ¯®«­ï¥¬ ¡ãä¥à
+        mov cx,18               ; Ğ·Ğ°Ğ¿Ğ¾Ğ»Ğ½ÑĞµĞ¼ Ğ±ÑƒÑ„ĞµÑ€
 nextCell:
         push cx
 nextCom:
@@ -438,7 +438,7 @@ outASM proc
         call getPoint
         je outPoint
         jnc skipPoint
-        mov ax,regIP            ; ¯¥à¥­¥áâ¨ à¥£¨áâàë CS:IP
+        mov ax,regIP            ; Ğ¿ĞµÑ€ĞµĞ½ĞµÑÑ‚Ğ¸ Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ñ‹ CS:IP
         mov regIP1,ax
         mov ax,regCS
         mov regCS1,ax
@@ -647,7 +647,7 @@ regB:
         pop si ax
         ret
 
-fillDI proc                 ; § ¯®¬­¨âì ¯p¥ä¨ªá, RK+1, RK+2, RK+3
+fillDI proc                 ; Ğ·Ğ°Ğ¿Ğ¾Ğ¼Ğ½Ğ¸Ñ‚ÑŒ Ğ¿pĞµÑ„Ğ¸ĞºÑ, RK+1, RK+2, RK+3
         push ax
         test al,10000000b
         jnz check11
@@ -809,7 +809,7 @@ outDb:
         jmp short fillHEXb
 fillHEX proc
         push cx      ; 1111000011110000b
-        mov cl,12    ;  ÀÄ
+        mov cl,12    ;  â””â”€
         call fillByteC
         mov cl,8
         call fillByteC
@@ -1602,37 +1602,37 @@ tableD  equ $
         dw strHlt ,prVoid,strCmc ,prVoid,strGr1 ,prF6  ,strGr1 ,prF7   ; F4
         dw strClc ,prVoid,strStc ,prVoid,strCli ,prVoid,strSti ,prVoid ; F8
         dw strCld ,prVoid,strStd ,prVoid,strGr3 ,prFE  ,strGr3 ,prFF   ; FC
-outBuf  db 'ÕÍÍ'
-count   db 'ÍÍÍÍÍÍ Internal disassembler [+,-,,,,',26,'] ÍÍÍÑ[x]¸' ; 1'
-        db '³ AX '
+outBuf  db 'â•’â•â•'
+count   db 'â•â•â•â•â•â• Internal disassembler [+,-,,,,',26,'] â•â•â•â•¤[x]â••' ; 1'
+        db 'â”‚ AX '
 pAX     db 5 dup (' '),'BX '
 pBX     db 5 dup (' '),'CX '
 pCX     db 5 dup (' '),'DX '
 pDX     db 5 dup (' '),'SI '
 pSI     db 5 dup (' '),'DI '
-pDI     db 4 dup (' '),'³VK³' ; 2
-        db '³ SP '
+pDI     db 4 dup (' '),'â”‚VKâ”‚' ; 2
+        db 'â”‚ SP '
 pSP     db 5 dup (' '),'BP '
 pBP     db 5 dup (' '),'CS '
 pCS     db 5 dup (' '),'SS '
 pSS     db 5 dup (' '),'DS '
 pDS     db 5 dup (' '),'ES '
-pES     db 4 dup (' '),'³AV³' ; 3
-        db 'ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄ´' ; 4
-        db '³'
-oldCom  db     48 dup (' '),'³O '
-pOF     db '0³' ; 5
-        db '³'
-outCom  db     48 dup (' '),'³D 0³' ; 6
-        db '³',48 dup (' '),'³I 0³' ; 7
-        db '³',48 dup (' '),'³T 0³' ; 8
-        db '³',48 dup (' '),'³S 0³' ; 9
-        db '³',48 dup (' '),'³Z 0³' ; 10
-        db '³',48 dup (' '),'³A 0³' ; 11
-        db '³',48 dup (' '),'³P 0³' ; 12
-        db '³',48 dup (' '),'³C 0³' ; 13
-        db 10 dup ('³',48 dup (' '),'³',32,32,32,'³') ; 14
-lastL   db 'ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÏÍÍÍ¾' ; 24
+pES     db 4 dup (' '),'â”‚AVâ”‚' ; 3
+        db 'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”¤' ; 4
+        db 'â”‚'
+oldCom  db     48 dup (' '),'â”‚O '
+pOF     db '0â”‚' ; 5
+        db 'â”‚'
+outCom  db     48 dup (' '),'â”‚D 0â”‚' ; 6
+        db 'â”‚',48 dup (' '),'â”‚I 0â”‚' ; 7
+        db 'â”‚',48 dup (' '),'â”‚T 0â”‚' ; 8
+        db 'â”‚',48 dup (' '),'â”‚S 0â”‚' ; 9
+        db 'â”‚',48 dup (' '),'â”‚Z 0â”‚' ; 10
+        db 'â”‚',48 dup (' '),'â”‚A 0â”‚' ; 11
+        db 'â”‚',48 dup (' '),'â”‚P 0â”‚' ; 12
+        db 'â”‚',48 dup (' '),'â”‚C 0â”‚' ; 13
+        db 10 dup ('â”‚',48 dup (' '),'â”‚',32,32,32,'â”‚') ; 14
+lastL   db 'â•˜â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•§â•â•â•â•›' ; 24
 lenLine equ $-lastL
 lenStr          dw 11    ; (14)
 stopAs          dw 5

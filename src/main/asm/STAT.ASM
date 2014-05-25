@@ -1,7 +1,7 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; Ç Ì‚Æ¨ ¨Æ§„´• ¢Î¢Æ§®‚·Ô ·‚†‚®·‚®™† Ø‡Æ¢•‡™®. éË®°™® ¢ †≠£´®©·™Æ¨ Ø‡Æ·Ï°†
-; ®·Ø‡†¢´Ô‚Ï.
+; –í —ç—Ç–æ–º –º–æ–¥—É–ª–µ –≤—ã–≤–æ–¥–∏—Ç—Å—è —Å—Ç–∞—Ç–∏—Å—Ç–∏–∫–∞ –ø—Ä–æ–≤–µ—Ä–∫–∏. –û—à–∏–±–∫–∏ –≤ –∞–Ω–≥–ª–∏–π—Å–∫–æ–º –ø—Ä–æ—Å—å–±–∞
+; –∏—Å–ø—Ä–∞–≤–ª—è—Ç—å.
 
 public  outFullStat,startTime,saveTimeD,saveTimeF,saveTimeO,outMemStat
 public  mesStatist,mesFiles&Sec,mesProgTest,mesVir&Mod,mesModTest,mesInf&BadF
@@ -327,85 +327,85 @@ timeOk:
         ret
         endp
         .data
-mesStatist      db 10,9,9,9,1,10,' ê•ß„´Ï‚†‚Î ·™†≠®‡Æ¢†≠®Ô:',10,0
+mesStatist      db 10,9,9,9,1,10,' –†–µ–∑—É–ª—å—Ç–∞—Ç—ã —Å–∫–∞–Ω–∏—Ä–æ–≤–∞–Ω–∏—è:',10,0
                 db 10,9,9,9,1,10,'     Scanning result:',10,0
                 dw 0EE01h,mesStatist
-mesFileSig      db 'á†£‡„¶•≠Æ ‰†©´Æ¢ ·®£≠†‚„‡ ® ¢≠•Ë≠®Â °†ß    - ',0
+mesFileSig      db '–ó–∞–≥—Ä—É–∂–µ–Ω–æ —Ñ–∞–π–ª–æ–≤ —Å–∏–≥–Ω–∞—Ç—É—Ä –∏ –≤–Ω–µ—à–Ω–∏—Ö –±–∞–∑    - ',0
                 db 'Is loaded of files .Sig and external bases - ',0
                 dw 0EE01h,mesFileSig
-mesFileSigVir   db '(·®£≠†‚„‡ ¢®‡„·Æ¢   ',0
+mesFileSigVir   db '(—Å–∏–≥–Ω–∞—Ç—É—Ä –≤–∏—Ä—É—Å–æ–≤   ',0
                 db '(sig. of viruses    ',0
                 dw 0EE01h,mesFileSigVir
-mesMemCell      db 1,14,'è‡Æ¢•‡•≠Æ „Á†·‚™Æ¢ Ø†¨Ô‚®                  - ',0
+mesMemCell      db 1,14,'–ü—Ä–æ–≤–µ—Ä–µ–Ω–æ —É—á–∞—Å—Ç–∫–æ–≤ –ø–∞–º—è—Ç–∏                  - ',0
                 db 1,14,'Is checked of sites of memory              - ',0
                 dw 0EE01h,mesMemCell
-mesMemCellStd   db '(®ß ≠®Â ·‚†≠§†‡‚≠ÎÂ ',0
+mesMemCellStd   db '(–∏–∑ –Ω–∏—Ö —Å—Ç–∞–Ω–¥–∞—Ä—Ç–Ω—ã—Ö ',0
                 db '(from them standard ',0
                 dw 0EE01h,MesMemCellStd
-mesMemVir       db 'é°≠†‡„¶•≠Æ ·‚†‡ÎÂ ® ≠Æ¢ÎÂ ¢®‡„·Æ¢ ¢ Ø†¨Ô‚® - ',0
+mesMemVir       db '–û–±–Ω–∞—Ä—É–∂–µ–Ω–æ —Å—Ç–∞—Ä—ã—Ö –∏ –Ω–æ–≤—ã—Ö –≤–∏—Ä—É—Å–æ–≤ –≤ –ø–∞–º—è—Ç–∏ - ',0
                 db 'Is found out of old and new viruses        - ',0
                 dw 0EE01h,mesMemVir
-mesMemVirNew    db '(®ß ≠®Â ≠Æ¢ÎÂ       ',0
+mesMemVirNew    db '(–∏–∑ –Ω–∏—Ö –Ω–æ–≤—ã—Ö       ',0
                 db '(from them new      ',0
                 dw 0EE01h,mesMemVirNew
-mesAmountCureM  db 'äÆ´®Á•·‚¢Æ Æ°•ß¢‡•¶•≠≠ÎÂ ® ß†°´Æ™®‡Æ¢†≠≠ÎÂ - ',0
+mesAmountCureM  db '–ö–æ–ª–∏—á–µ—Å—Ç–≤–æ –æ–±–µ–∑–≤—Ä–µ–∂–µ–Ω–Ω—ã—Ö –∏ –∑–∞–±–ª–æ–∫–∏—Ä–æ–≤–∞–Ω–Ω—ã—Ö - ',0
                 db 'The quantity neuralized and blocked        - ',0
                 dw 0EE01h,mesAmountCureM
-mesAmountLock   db '(®ß ≠®Â ß†°´Æ™®‡.   ',0
+mesAmountLock   db '(–∏–∑ –Ω–∏—Ö –∑–∞–±–ª–æ–∫–∏—Ä.   ',0
                 db '(from them is block ',0
                 dw 0EE01h,mesAmountLock
-mesFiles&Sec    db 1,11,'è‡Æ¢•‡•≠Æ ‰†©´Æ¢ ® ß†£‡„ßÆÁ≠ÎÂ ·•™‚Æ‡Æ¢    - ',0 ; 1
+mesFiles&Sec    db 1,11,'–ü—Ä–æ–≤–µ—Ä–µ–Ω–æ —Ñ–∞–π–ª–æ–≤ –∏ –∑–∞–≥—Ä—É–∑–æ—á–Ω—ã—Ö —Å–µ–∫—Ç–æ—Ä–æ–≤    - ',0 ; 1
                 db 1,11,'Is checked of files and loading sectors    - ',0
                 dw 0EE01h,mesFiles&Sec
-mesProgTest     db '(®ß ≠®Â Ø‡Æ£‡†¨¨    ',0
+mesProgTest     db '(–∏–∑ –Ω–∏—Ö –ø—Ä–æ–≥—Ä–∞–º–º    ',0
                 db '(of the programs    ',0
                 dw 0EE01h,mesProgTest
-mesVir&Mod      db 'é°≠†‡„¶•≠Æ ¢®‡„·Æ¢ ® ®Â ¨Æ§®‰®™†Ê®©        - ',0 ; 2
+mesVir&Mod      db '–û–±–Ω–∞—Ä—É–∂–µ–Ω–æ –≤–∏—Ä—É—Å–æ–≤ –∏ –∏—Ö –º–æ–¥–∏—Ñ–∏–∫–∞—Ü–∏–π        - ',0 ; 2
                 db 'Is found out of viruses & their updatings  - ',0; 2
                 dw 0EE01h,mesVir&Mod
-mesModTest      db '(®ß ≠®Â ¨Æ§®‰®™†Ê®© ',0
+mesModTest      db '(–∏–∑ –Ω–∏—Ö –º–æ–¥–∏—Ñ–∏–∫–∞—Ü–∏–π ',0
                 db '(of updatings       ',0
                 dw 0EE01h,mesModTest
-mesInf&BadF     db 'é°≠†‡„¶•≠Æ ß†‡†¶•≠≠ÎÂ ® ®·ØÆ‡Á•≠≠ÎÂ ‰†©´Æ¢ - ',0 ; 3
+mesInf&BadF     db '–û–±–Ω–∞—Ä—É–∂–µ–Ω–æ –∑–∞—Ä–∞–∂–µ–Ω–Ω—ã—Ö –∏ –∏—Å–ø–æ—Ä—á–µ–Ω–Ω—ã—Ö —Ñ–∞–π–ª–æ–≤ - ',0 ; 3
                 db 'Is found out infected and bad files        - ',0; 3
                 dw 0EE01h,mesInf&BadF
-mesBadTest      db '(®ß ≠®Â ®·ØÆ‡Á•≠≠ÎÂ ',0
+mesBadTest      db '(–∏–∑ –Ω–∏—Ö –∏—Å–ø–æ—Ä—á–µ–Ω–Ω—ã—Ö ',0
                 db '(from them bad      ',0
                 dw 0EE01h,mesBadTest
-mesNewVir       db 'é°≠†‡„¶•≠Æ ØÆ§Æß‡®‚•´Ï≠ÎÂ ≠† ¢®‡„· ‰†©´Æ¢  - ',0
+mesNewVir       db '–û–±–Ω–∞—Ä—É–∂–µ–Ω–æ –ø–æ–¥–æ–∑—Ä–∏—Ç–µ–ª—å–Ω—ã—Ö –Ω–∞ –≤–∏—Ä—É—Å —Ñ–∞–π–ª–æ–≤  - ',0
                 db 'Is found out suspicious on virus of files  - ',0
                 dw 0EE01h,mesNewVir
-mesRenTest      db '(®ß ≠®Â Ø•p•®¨•≠Æ¢. ',0
+mesRenTest      db '(–∏–∑ –Ω–∏—Ö –ø–µp–µ–∏–º–µ–Ω–æ–≤. ',0
                 db '(from them rename   ',0
                 dw 0EE01h,mesRenTest
-mesCure&Del     db 'äÆ´®Á•·‚¢Æ ¢Î´•Á•≠≠ÎÂ ® „§†´•≠≠ÎÂ ‰†©´Æ¢   - ',0 ; 4
+mesCure&Del     db '–ö–æ–ª–∏—á–µ—Å—Ç–≤–æ –≤—ã–ª–µ—á–µ–Ω–Ω—ã—Ö –∏ —É–¥–∞–ª–µ–Ω–Ω—ã—Ö —Ñ–∞–π–ª–æ–≤   - ',0 ; 4
                 db 'Quantity of cured and removed files        - ',0
                 dw 0EE01h,mesCure&Del
-mesDelTest      db '(®ß ≠®Â „§†´•≠≠ÎÂ   ',0
+mesDelTest      db '(–∏–∑ –Ω–∏—Ö —É–¥–∞–ª–µ–Ω–Ω—ã—Ö   ',0
                 db '(from them remoted  ',0
                 dw 0EE01h,mesDelTest
-mesStranDate    db 'äÆ´®Á•·‚¢Æ ‰†©´Æ¢ ·Æ ·‚‡†≠≠Æ© §†‚Æ© ·Æß§.  - ',0 ; 5
+mesStranDate    db '–ö–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ñ–∞–π–ª–æ–≤ —Å–æ —Å—Ç—Ä–∞–Ω–Ω–æ–π –¥–∞—Ç–æ–π —Å–æ–∑–¥.  - ',0 ; 5
                 db 'Quantity of files with strange date        - ',0
                 dw 0EE01h,mesStranDate
-mesDateCur      db '(§†‚† ®·Ø‡†¢´•≠† „  ',0
+mesDateCur      db '(–¥–∞—Ç–∞ –∏—Å–ø—Ä–∞–≤–ª–µ–Ω–∞ —É  ',0
                 db '(is corrected at    ',0
                 dw 0EE01h,mesDateCur
-mesFilesCrypt   db 1,14,'äÆ´®Á•·‚¢Æ ‰†©´Æ¢, ·Æ§•‡¶†È®Â ‡†·Ë®‰‡Æ¢È®™ - ',0 ; 6
+mesFilesCrypt   db 1,14,'–ö–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ñ–∞–π–ª–æ–≤, —Å–æ–¥–µ—Ä–∂–∞—â–∏—Ö —Ä–∞—Å—à–∏—Ñ—Ä–æ–≤—â–∏–∫ - ',0 ; 6
                 db 1,14,'Quantity of files, containing CRYPT code   - ',0
                 dw 0EE01h,mesFilesCrypt
-mesTimeScan     db 'Ç‡•¨Ô ·™†≠®‡Æ¢†≠®Ô §®‡•™‚Æ‡®© ® ‰†©´Æ¢     - ',0 ; 7
+mesTimeScan     db '–í—Ä–µ–º—è —Å–∫–∞–Ω–∏—Ä–æ–≤–∞–Ω–∏—è –¥–∏—Ä–µ–∫—Ç–æ—Ä–∏–π –∏ —Ñ–∞–π–ª–æ–≤     - ',0 ; 7
                 db 'Time of scanning of directories and files  - ',0
                 dw 0EE01h,mesTimeScan
-mesTimeFile     db '(¢‡•¨Ô ≠† ‰†©´Î ',0
+mesTimeFile     db '(–≤—Ä–µ–º—è –Ω–∞ —Ñ–∞–π–ª—ã ',0
                 db '(time on files  ',0
                 dw 0EE01h,mesTimeFile
-mesSpeedFile    db 'ë™Æ‡Æ·‚Ï Ø‡Æ¢•‡™® - ',0                          ; 8
+mesSpeedFile    db '–°–∫–æ—Ä–æ—Å—Ç—å –ø—Ä–æ–≤–µ—Ä–∫–∏ - ',0                          ; 8
                 db 'Speed of check    - ',0
                 dw 0EE01h,mesSpeedFile
-mesSpeedDir     db '‰†©´(Æ¢) ¢ ¨®≠„‚„, ',0                          ; 9
+mesSpeedDir     db '—Ñ–∞–π–ª(–æ–≤) –≤ –º–∏–Ω—É—Ç—É, ',0                          ; 9
                 db 'files in minute,   ',0
                 dw 0EE01h,mesSpeedDir
-mesDirMin       db '§®‡•™‚Æ‡®© ¢ ¨®≠„‚„.',0
+mesDirMin       db '–¥–∏—Ä–µ–∫—Ç–æ—Ä–∏–π –≤ –º–∏–Ω—É—Ç—É.',0
                 db 'directories in min. ',0
                 dw 0EE01h,mesDirMin
 

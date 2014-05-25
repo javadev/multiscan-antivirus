@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ‚ ¨Æ§„´Ï ØÆ§™´ÓÁ†•‚ MSB ‰†©´Î ® Ø‡Æ¢•‡Ô•‚ ¢‡•¨Ô/§†‚„ ·Æß§†≠®Ô ‰†©´Æ¢.
+; –≠—Ç–æ—Ç –º–æ–¥—É–ª—å –ø–æ–¥–∫–ª—é—á–∞–µ—Ç MSB —Ñ–∞–π–ª—ã –∏ –ø—Ä–æ–≤–µ—Ä—è–µ—Ç –≤—Ä–µ–º—è/–¥–∞—Ç—É —Å–æ–∑–¥–∞–Ω–∏—è —Ñ–∞–π–ª–æ–≤.
 ;
 
 public  setPadeg,checkSt,formDI_CX,formDI_CX1,print0D0A1,checkTD,outTSR
@@ -456,7 +456,7 @@ gangePad:
         div bx
         cmp dl,1
         je  gangePad1
-        mov word ptr padeg,'.†'
+        mov word ptr padeg,'.–∞'
         jmp short exitPadeg
 checkSt proc
         cmp varKeySt,1
@@ -836,19 +836,19 @@ timeNorm:
 fontSeg segment byte public
 fontSeg ends
         .data
-mesBadD         db 1,12,' - ·‚‡†≠≠†Ô §†‚† ·Æß§†≠®Ô ',0
+mesBadD         db 1,12,' - —Å—Ç—Ä–∞–Ω–Ω–∞—è –¥–∞—Ç–∞ —Å–æ–∑–¥–∞–Ω–∏—è ',0
                 db 1,12,' - strange creation date ',0
                 dw 0EE01h,mesBadD
-mesBadT         db 1,12,' - ·‚‡†≠≠Æ• ¢‡•¨Ô ·Æß§†≠®Ô ',0
+mesBadT         db 1,12,' - —Å—Ç—Ä–∞–Ω–Ω–æ–µ –≤—Ä–µ–º—è —Å–æ–∑–¥–∞–Ω–∏—è ',0
                 db 1,12,' - strange creation time ',0
                 dw 0EE01h,mesBadT
-mesSetD         db 1,12,'à·Ø‡†¢®‚Ï',0
+mesSetD         db 1,12,'–ò—Å–ø—Ä–∞–≤–∏—Ç—å',0
                 db 1,12,'Change',0
                 dw 0EE01h,mesSetD
-mesOkD          db 1,11,' àëèêÄÇãÖçÄ ≠† ',1,10,'1.1.1995',10,0
+mesOkD          db 1,11,' –ò–°–ü–†–ê–í–õ–ï–ù–ê –Ω–∞ ',1,10,'1.1.1995',10,0
                 db 1,11,' CHANGED - ',1,10,'1/1/1995',10,0
                 dw 0EE01h,mesOkD
-mesOkT          db 1,11,' àëèêÄÇãÖçé ≠†'
+mesOkT          db 1,11,' –ò–°–ü–†–ê–í–õ–ï–ù–û –Ω–∞'
 newT            db 1,10,' 12:00:00',10,0
                 db 1,11,' CHANGED -'
                 dw 0FF01h,newT
@@ -856,24 +856,24 @@ newT            db 1,10,' 12:00:00',10,0
                 dw 0EE01h,mesOkT
 motEng          db '???',0,'Jan',0,'Feb',0,'Mar',0,'Apr',0,'May',0,'Jun',0
                 db 'Jul',0,'Aug',0,'Sep',0,'Okt',0,'Nov',0,'Dec',0
-motRus          db '???',0,'Ô≠¢',0,'‰•¢',0,'¨†‡',0,'†Ø‡',0,'¨†©',0,'®Ó≠',0
-                db '®Ó´',0,'†¢£',0,'·•≠',0,'Æ™‚',0,'≠ÆÔ',0,'§•™',0
-mesWasLoad      db ' - †≠‚®¢®‡„·≠†Ô °†ß† °Î´† ß†£‡„¶•≠† !',10,0
+motRus          db '???',0,'—è–Ω–≤',0,'—Ñ–µ–≤',0,'–º–∞—Ä',0,'–∞–ø—Ä',0,'–º–∞–π',0,'–∏—é–Ω',0
+                db '–∏—é–ª',0,'–∞–≤–≥',0,'—Å–µ–Ω',0,'–æ–∫—Ç',0,'–Ω–æ—è',0,'–¥–µ–∫',0
+mesWasLoad      db ' - –∞–Ω—Ç–∏–≤–∏—Ä—É—Å–Ω–∞—è –±–∞–∑–∞ –±—ã–ª–∞ –∑–∞–≥—Ä—É–∂–µ–Ω–∞ !',10,0
                 db ' - antivirus was included !',10,0
                 dw 0EE01h,mesWasLoad
-mesErrMsb       db ' - †≠‚®¢®‡„·≠†Ô °†ß† ØÆ¢‡•¶§•≠† !',10,0
+mesErrMsb       db ' - –∞–Ω—Ç–∏–≤–∏—Ä—É—Å–Ω–∞—è –±–∞–∑–∞ –ø–æ–≤—Ä–µ–∂–¥–µ–Ω–∞ !',10,0
                 db ' - antivirus base is corrupted !',10,0
                 dw 0EE01h,mesErrMsb
-mesLoadMs       db ' - ß†£‡„¶•≠Æ ¨†·Æ™ ¢®‡„·Æ¢ : ',0
+mesLoadMs       db ' - –∑–∞–≥—Ä—É–∂–µ–Ω–æ –º–∞—Å–æ–∫ –≤–∏—Ä—É—Å–æ–≤ : ',0
                 db ' - load virus mask is : ',0
                 dw 0EE01h,mesLoadMs
-mesBadVer       db ' - ‰†©´ °Î´ ·Æß§†≠ °Æ´•• ‡†≠≠•© ¢•‡·®•© !',10,0
+mesBadVer       db ' - —Ñ–∞–π–ª –±—ã–ª —Å–æ–∑–¥–∞–Ω –±–æ–ª–µ–µ —Ä–∞–Ω–Ω–µ–π –≤–µ—Ä—Å–∏–µ–π !',10,0
                 db ' - file was created is old version !',10,0
                 dw 0EE01h,mesBadVer
-mesNoMemMSB     db ' - ≠•§Æ·‚†‚ÆÁ≠Æ Ø†¨Ô‚® §´Ô ß†£‡„ß™® .MSB ‰†©´† !',10,0
+mesNoMemMSB     db ' - –Ω–µ–¥–æ—Å—Ç–∞—Ç–æ—á–Ω–æ –ø–∞–º—è—Ç–∏ –¥–ª—è –∑–∞–≥—Ä—É–∑–∫–∏ .MSB —Ñ–∞–π–ª–∞ !',10,0
                 db ' - Insufficient memory to load .MSB file !',10,0
                 dw 0EE01h,mesNoMemMSB
-mesNoGr100MSB   db ' - ≠•¢Æß¨Æ¶≠† ß†£‡„ß™† °Æ´•• 100 .MSB ‰†©´Æ¢ !',10,0
+mesNoGr100MSB   db ' - –Ω–µ–≤–æ–∑–º–æ–∂–Ω–∞ –∑–∞–≥—Ä—É–∑–∫–∞ –±–æ–ª–µ–µ 100 .MSB —Ñ–∞–π–ª–æ–≤ !',10,0
                 db ' - can''t load above of 100 .MSB files !',10,0
                 dw 0EE01h,mesNoGr100MSB
 strBeg1         db 'BEGIN:'

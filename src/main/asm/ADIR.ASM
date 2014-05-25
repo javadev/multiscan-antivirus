@@ -1,8 +1,8 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; Этот модуль сканирует каталоги, используя int25. Применялся для вирусов
-; Driver1024. Также располагает модулем проверки стелс-вирусов.
-; FAT32 не проверяет. 
+; ╨н╤В╨╛╤В ╨╝╨╛╨┤╤Г╨╗╤М ╤Б╨║╨░╨╜╨╕╤А╤Г╨╡╤В ╨║╨░╤В╨░╨╗╨╛╨│╨╕, ╨╕╤Б╨┐╨╛╨╗╤М╨╖╤Г╤П int25. ╨Я╤А╨╕╨╝╨╡╨╜╤П╨╗╤Б╤П ╨┤╨╗╤П ╨▓╨╕╤А╤Г╤Б╨╛╨▓
+; Driver1024. ╨в╨░╨║╨╢╨╡ ╤А╨░╤Б╨┐╨╛╨╗╨░╨│╨░╨╡╤В ╨╝╨╛╨┤╤Г╨╗╨╡╨╝ ╨┐╤А╨╛╨▓╨╡╤А╨║╨╕ ╤Б╤В╨╡╨╗╤Б-╨▓╨╕╤А╤Г╤Б╨╛╨▓.
+; FAT32 ╨╜╨╡ ╨┐╤А╨╛╨▓╨╡╤А╤П╨╡╤В. 
 
 public  antiDir,memoryLo,whoB
 extrn   print:near,buf:near,path:word,who:near,mesWho:near,mesDir20:near
@@ -16,13 +16,13 @@ extrn   fname:near,pathDir:word,printPath:near,formDI_CX1:near,printPSp:near
 extrn   varND:byte
         .model small
         .code
-; Здесь происходит запрос с звуковым сигналом
+; ╨Ч╨┤╨╡╤Б╤М ╨┐╤А╨╛╨╕╤Б╤Е╨╛╨┤╨╕╤В ╨╖╨░╨┐╤А╨╛╤Б ╤Б ╨╖╨▓╤Г╨║╨╛╨▓╤Л╨╝ ╤Б╨╕╨│╨╜╨░╨╗╨╛╨╝
 whoB proc
         call beep
         call who
         ret
         endp
-; скопировать строку path в pathDir
+; ╤Б╨║╨╛╨┐╨╕╤А╨╛╨▓╨░╤В╤М ╤Б╤В╤А╨╛╨║╤Г path ╨▓ pathDir
 movePath proc
         push cx si di
         lea si,path
@@ -32,7 +32,7 @@ movePath proc
         pop di si cx
         ret
         endp
-; Главная подпрограмма, сканирующая каталоги используя int 25
+; ╨У╨╗╨░╨▓╨╜╨░╤П ╨┐╨╛╨┤╨┐╤А╨╛╨│╤А╨░╨╝╨╝╨░, ╤Б╨║╨░╨╜╨╕╤А╤Г╤О╤Й╨░╤П ╨║╨░╤В╨░╨╗╨╛╨│╨╕ ╨╕╤Б╨┐╨╛╨╗╤М╨╖╤Г╤П int 25
 antiDir proc
         call print0D
         push ax es
@@ -42,16 +42,16 @@ antiDir proc
         mov ah,30h
         int 21h
         mov verDos,al
-        cmp varND,1  	; проверка, если ключ /D установлен, то сканировать
+        cmp varND,1  	; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░, ╨╡╤Б╨╗╨╕ ╨║╨╗╤О╤З /D ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜, ╤В╨╛ ╤Б╨║╨░╨╜╨╕╤А╨╛╨▓╨░╤В╤М
         jne exitAdirOk
         mov al,device
         sub al,'A'
         mov disk,al
-        call checkNet	; проверка сетевой диск или нет
+        call checkNet	; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╤Б╨╡╤В╨╡╨▓╨╛╨╣ ╨┤╨╕╤Б╨║ ╨╕╨╗╨╕ ╨╜╨╡╤В
         jc  exitAdirOk
-        call getParam	; получить параметры раздела
+        call getParam	; ╨┐╨╛╨╗╤Г╤З╨╕╤В╤М ╨┐╨░╤А╨░╨╝╨╡╤В╤А╤Л ╤А╨░╨╖╨┤╨╡╨╗╨░
         jc  exitAdirOk
-        call scanDisk	; сканировать диск сейчас
+        call scanDisk	; ╤Б╨║╨░╨╜╨╕╤А╨╛╨▓╨░╤В╤М ╨┤╨╕╤Б╨║ ╤Б╨╡╨╣╤З╨░╤Б
         pushf
         call deleteBlock
         popf
@@ -62,7 +62,7 @@ exitAdir:
 exitAdirOk:
         clc
         jmp short exitAdir
-; проверка сетевой диск или нет
+; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ ╤Б╨╡╤В╨╡╨▓╨╛╨╣ ╨┤╨╕╤Б╨║ ╨╕╨╗╨╕ ╨╜╨╡╤В
 checkNet proc
         push ax bx dx
         xor ah,ah
@@ -78,7 +78,7 @@ unknownDisk:
         pop dx bx ax
         ret
         endp
-; удалить блок памяти в которм хранится FAT
+; ╤Г╨┤╨░╨╗╨╕╤В╤М ╨▒╨╗╨╛╨║ ╨┐╨░╨╝╤П╤В╨╕ ╨▓ ╨║╨╛╤В╨╛╤А╨╝ ╤Е╤А╨░╨╜╨╕╤В╤Б╤П FAT
 deleteBlock proc
         push ax es
         mov es,segFat
@@ -87,11 +87,11 @@ deleteBlock proc
         pop es ax
         ret
         endp
-; главная подпрограмма сканирования диска
+; ╨│╨╗╨░╨▓╨╜╨░╤П ╨┐╨╛╨┤╨┐╤А╨╛╨│╤А╨░╨╝╨╝╨░ ╤Б╨║╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╤П ╨┤╨╕╤Б╨║╨░
 scanDisk proc
         push ax bx cx dx
         mov ax,[myDta+0Fh]
-        call makeSect		; начальный кластер выбираем из DTA
+        call makeSect		; ╨╜╨░╤З╨░╨╗╤М╨╜╤Л╨╣ ╨║╨╗╨░╤Б╤В╨╡╤А ╨▓╤Л╨▒╨╕╤А╨░╨╡╨╝ ╨╕╨╖ DTA
         lea bx,tableRoot
         mov word ptr [bx],offset tableRoot+2
         mov word ptr [bx+2],ax
@@ -99,39 +99,39 @@ scanDisk proc
         mov word ptr [bx+6],0   
         inc dirCount    ;st
 nextFile1:
-        call checkBreak		; проверкка на клавишу ESC
+        call checkBreak		; ╨┐╤А╨╛╨▓╨╡╤А╨║╨║╨░ ╨╜╨░ ╨║╨╗╨░╨▓╨╕╤И╤Г ESC
         jc exit
-        call readSec		; читать сектор диска
+        call readSec		; ╤З╨╕╤В╨░╤В╤М ╤Б╨╡╨║╤В╨╛╤А ╨┤╨╕╤Б╨║╨░
         jc exitOk
 nextFile:
-        call checkSec		; проверить сектор диска
-        or bl,bl        	; проверка - это файл ?
+        call checkSec		; ╨┐╤А╨╛╨▓╨╡╤А╨╕╤В╤М ╤Б╨╡╨║╤В╨╛╤А ╨┤╨╕╤Б╨║╨░
+        or bl,bl        	; ╨┐╤А╨╛╨▓╨╡╤А╨║╨░ - ╤Н╤В╨╛ ╤Д╨░╨╣╨╗ ?
         jne nextCheck1
 moreDirVir:
-        call printFname		; проверить поля имени
+        call printFname		; ╨┐╤А╨╛╨▓╨╡╤А╨╕╤В╤М ╨┐╨╛╨╗╤П ╨╕╨╝╨╡╨╜╨╕
         jc  exit
         jmp short nextFile
 nextCheck1:
-        cmp bl,1        ; это dir ?
+        cmp bl,1        ; ╤Н╤В╨╛ dir ?
         jne nextCheck2
         inc dirCount    
-        call addDir     ; зайти в подкаталог
+        call addDir     ; ╨╖╨░╨╣╤В╨╕ ╨▓ ╨┐╨╛╨┤╨║╨░╤В╨░╨╗╨╛╨│
         call go
         jmp short nextFile1
 nextCheck2:
-        cmp bl,2        ; последняя запись в секторе ?
+        cmp bl,2        ; ╨┐╨╛╤Б╨╗╨╡╨┤╨╜╤П╤П ╨╖╨░╨┐╨╕╤Б╤М ╨▓ ╤Б╨╡╨║╤В╨╛╤А╨╡ ?
         je  nextFile1
-        cmp bl,3        ; удаленный файл ?
+        cmp bl,3        ; ╤Г╨┤╨░╨╗╨╡╨╜╨╜╤Л╨╣ ╤Д╨░╨╣╨╗ ?
         je  nextFile
 nextCheck3:
-        cmp bl,4        ; метка диска ?
+        cmp bl,4        ; ╨╝╨╡╤В╨║╨░ ╨┤╨╕╤Б╨║╨░ ?
         je  nextFile
 nextCheck4:
-        cmp bl,5	; каталог проверен полностью ?
+        cmp bl,5	; ╨║╨░╤В╨░╨╗╨╛╨│ ╨┐╤А╨╛╨▓╨╡╤А╨╡╨╜ ╨┐╨╛╨╗╨╜╨╛╤Б╤В╤М╤О ?
         jne nextCheck5
-        call subDir	; вернуться на подкаталог вверх
+        call subDir	; ╨▓╨╡╤А╨╜╤Г╤В╤М╤Б╤П ╨╜╨░ ╨┐╨╛╨┤╨║╨░╤В╨░╨╗╨╛╨│ ╨▓╨▓╨╡╤А╤Е
         call back
-        jnc nextFile1	; все каталоги пройдены ?
+        jnc nextFile1	; ╨▓╤Б╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨╕ ╨┐╤А╨╛╨╣╨┤╨╡╨╜╤Л ?
 nextCheck5:
 exitOk:
         clc
@@ -139,7 +139,7 @@ exit:
         pop dx cx bx ax
         ret
         endp
-; вернуться на подкаталог вверх
+; ╨▓╨╡╤А╨╜╤Г╤В╤М╤Б╤П ╨╜╨░ ╨┐╨╛╨┤╨║╨░╤В╨░╨╗╨╛╨│ ╨▓╨▓╨╡╤А╤Е
 back proc
         push bx
         sub tableRoot,6
@@ -149,7 +149,7 @@ back proc
         pop bx
         ret
         endp
-; войти в покаталог
+; ╨▓╨╛╨╣╤В╨╕ ╨▓ ╨┐╨╛╨║╨░╤В╨░╨╗╨╛╨│
 addDir proc
         push ax cx dx si di
         call formDI_CX
@@ -162,7 +162,7 @@ addDir proc
         pop di si dx cx ax
         ret
         endp
-; выйти из подкаталога
+; ╨▓╤Л╨╣╤В╨╕ ╨╕╨╖ ╨┐╨╛╨┤╨║╨░╤В╨░╨╗╨╛╨│╨░
 subDir proc
         push ax cx dx si di
         call formDI_CX
@@ -174,7 +174,7 @@ subDir proc
         pop di si dx cx ax
         ret
         endp
-; сформировать имя файла (в обход ДОС)
+; ╤Б╤Д╨╛╤А╨╝╨╕╤А╨╛╨▓╨░╤В╤М ╨╕╨╝╤П ╤Д╨░╨╣╨╗╨░ (╨▓ ╨╛╨▒╤Е╨╛╨┤ ╨Ф╨Ю╨б)
 formName proc
         push ax cx si di
         mov si,pName
@@ -207,7 +207,7 @@ skipPoint:
         pop si cx ax
         ret
         endp
-; получить номер сектора, через номер кластера
+; ╨┐╨╛╨╗╤Г╤З╨╕╤В╤М ╨╜╨╛╨╝╨╡╤А ╤Б╨╡╨║╤В╨╛╤А╨░, ╤З╨╡╤А╨╡╨╖ ╨╜╨╛╨╝╨╡╤А ╨║╨╗╨░╤Б╤В╨╡╤А╨░
 go proc
         push si
         mov si,pName
@@ -217,39 +217,39 @@ go proc
         pop si
         ret
         endp
-; получить номер кластера, через номер сектора
+; ╨┐╨╛╨╗╤Г╤З╨╕╤В╤М ╨╜╨╛╨╝╨╡╤А ╨║╨╗╨░╤Б╤В╨╡╤А╨░, ╤З╨╡╤А╨╡╨╖ ╨╜╨╛╨╝╨╡╤А ╤Б╨╡╨║╤В╨╛╤А╨░
 makeClust proc
         mov ax,[bx]
-        mov dx,[bx+2]   ; сектор в dx:ax
+        mov dx,[bx+2]   ; ╤Б╨╡╨║╤В╨╛╤А ╨▓ dx:ax
         sub ax,endRoot
         sbb dx,0
-        div word ptr clustSize  ; кластер в ax
+        div word ptr clustSize  ; ╨║╨╗╨░╤Б╤В╨╡╤А ╨▓ ax
         add ax,2
         adc dx,0
         ret
         endp
-; получеть номер следующего кластера, используя ФАТ
+; ╨┐╨╛╨╗╤Г╤З╨╡╤В╤М ╨╜╨╛╨╝╨╡╤А ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╡╨│╨╛ ╨║╨╗╨░╤Б╤В╨╡╤А╨░, ╨╕╤Б╨┐╨╛╨╗╤М╨╖╤Г╤П ╨д╨Р╨в
 getNextClust proc
         push bx cx
         call makeClust
         call getCLinAX
         cmp bx,ax
-        jb lastCl       ; последний кластер
-        call makeSect   ; прочитать кластер в ax
+        jb lastCl       ; ╨┐╨╛╤Б╨╗╨╡╨┤╨╜╨╕╨╣ ╨║╨╗╨░╤Б╤В╨╡╤А
+        call makeSect   ; ╨┐╤А╨╛╤З╨╕╤В╨░╤В╤М ╨║╨╗╨░╤Б╤В╨╡╤А ╨▓ ax
         clc
 lastCl:
         pop cx bx
         ret
         endp
-; выбрать номер кластера из ФАТ
+; ╨▓╤Л╨▒╤А╨░╤В╤М ╨╜╨╛╨╝╨╡╤А ╨║╨╗╨░╤Б╤В╨╡╤А╨░ ╨╕╨╖ ╨д╨Р╨в
 getClinAX proc
         push cx
         push es
         mov es,segFat
         mov cx,ax
-        mul word ptr fatUp      ; умножим на 3 или 4
+        mul word ptr fatUp      ; ╤Г╨╝╨╜╨╛╨╢╨╕╨╝ ╨╜╨░ 3 ╨╕╨╗╨╕ 4
         shr dx,1
-        rcr ax,1        ; делим на 2
+        rcr ax,1        ; ╨┤╨╡╨╗╨╕╨╝ ╨╜╨░ 2
         or dx,dx
         jz getOldCl
         mov bx,es
@@ -274,7 +274,7 @@ cont:
         pop cx
         ret
         endp
-; перевести кластер в сектор
+; ╨┐╨╡╤А╨╡╨▓╨╡╤Б╤В╨╕ ╨║╨╗╨░╤Б╤В╨╡╤А ╨▓ ╤Б╨╡╨║╤В╨╛╤А
 makeSect proc      
         or ax,ax
         jne oldMakeS
@@ -289,12 +289,12 @@ oldMakeS:
         adc dx,0
         ret
         endp
-; обнулить указатель в таблице
+; ╨╛╨▒╨╜╤Г╨╗╨╕╤В╤М ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨▓ ╤В╨░╨▒╨╗╨╕╤Ж╨╡
 stepGo1 proc
         push bx
         jmp short setDx
         endp
-; перейти к следующему элементу
+; ╨┐╨╡╤А╨╡╨╣╤В╨╕ ╨║ ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╡╨╝╤Г ╤Н╨╗╨╡╨╝╨╡╨╜╤В╤Г
 stepGo proc
         push bx
         add tableRoot,6
@@ -311,14 +311,14 @@ checkSec proc
 ; table | sectorLo | sectorHi | count cell | count sec |
         push cx si
         mov bx,tableRoot
-        call checkOut   ; проверить сектор кластера
+        call checkOut   ; ╨┐╤А╨╛╨▓╨╡╤А╨╕╤В╤М ╤Б╨╡╨║╤В╨╛╤А ╨║╨╗╨░╤Б╤В╨╡╤А╨░
         jc  exitClust
-        mov si,word ptr [bx+4]  ; номер файла в si
-        inc byte ptr [bx+4]     ; увеличить номер файла
+        mov si,word ptr [bx+4]  ; ╨╜╨╛╨╝╨╡╤А ╤Д╨░╨╣╨╗╨░ ╨▓ si
+        inc byte ptr [bx+4]     ; ╤Г╨▓╨╡╨╗╨╕╤З╨╕╤В╤М ╨╜╨╛╨╝╨╡╤А ╤Д╨░╨╣╨╗╨░
         and si,0FFh
         mov cl,5
         shl si,cl
-        lea si,[buf+si] ; в si - указатель на имя
+        lea si,[buf+si] ; ╨▓ si - ╤Г╨║╨░╨╖╨░╤В╨╡╨╗╤М ╨╜╨░ ╨╕╨╝╤П
 moreDir:
         mov pName,si
         lodsb
@@ -375,11 +375,11 @@ getSector proc
         endp
 checkOut proc
 cellInSec equ byte ptr $+3
-        cmp byte ptr [bx+4],16  ; текущий файл 16-й ?
+        cmp byte ptr [bx+4],16  ; ╤В╨╡╨║╤Г╤Й╨╕╨╣ ╤Д╨░╨╣╨╗ 16-╨╣ ?
         clc
-        jne checkName           ; нет дальше ...
+        jne checkName           ; ╨╜╨╡╤В ╨┤╨░╨╗╤М╤И╨╡ ...
         mov byte ptr [bx+4],0
-        inc byte ptr [bx+5]     ; увеличить номер сектора в кластере
+        inc byte ptr [bx+5]     ; ╤Г╨▓╨╡╨╗╨╕╤З╨╕╤В╤М ╨╜╨╛╨╝╨╡╤А ╤Б╨╡╨║╤В╨╛╤А╨░ ╨▓ ╨║╨╗╨░╤Б╤В╨╡╤А╨╡
         call getSector
         cmp ax,endRoot
         ja  notEnd1
@@ -394,13 +394,13 @@ checkName:
 notEnd1:
         push ax
         mov al,byte ptr [bx+5]
-        cmp al,byte ptr clustSize ; проверены все сектора кластера ?
+        cmp al,byte ptr clustSize ; ╨┐╤А╨╛╨▓╨╡╤А╨╡╨╜╤Л ╨▓╤Б╨╡ ╤Б╨╡╨║╤В╨╛╤А╨░ ╨║╨╗╨░╤Б╤В╨╡╤А╨░ ?
         pop ax
-        jb  myEnd2              ; нет не все
-        mov byte ptr [bx+5],0   ; обнуляем счетчики
-        call getNextClust       ; берем следующий в dx:ax
+        jb  myEnd2              ; ╨╜╨╡╤В ╨╜╨╡ ╨▓╤Б╨╡
+        mov byte ptr [bx+5],0   ; ╨╛╨▒╨╜╤Г╨╗╤П╨╡╨╝ ╤Б╤З╨╡╤В╤З╨╕╨║╨╕
+        call getNextClust       ; ╨▒╨╡╤А╨╡╨╝ ╤Б╨╗╨╡╨┤╤Г╤О╤Й╨╕╨╣ ╨▓ dx:ax
         jc  lastDir
-        call stepGo1            ; запомнить сектор в таблице
+        call stepGo1            ; ╨╖╨░╨┐╨╛╨╝╨╜╨╕╤В╤М ╤Б╨╡╨║╤В╨╛╤А ╨▓ ╤В╨░╨▒╨╗╨╕╤Ж╨╡
         jmp myEnd2
 lastDir:
         mov bl,5
@@ -692,8 +692,8 @@ readBoot proc
         endp
 readFat proc
         push ax bx cx dx
-        mov dx,[bx+0Eh] ; начальнай сектор
-        mov cx,[bx+16h] ; количкство секторов
+        mov dx,[bx+0Eh] ; ╨╜╨░╤З╨░╨╗╤М╨╜╨░╨╣ ╤Б╨╡╨║╤В╨╛╤А
+        mov cx,[bx+16h] ; ╨║╨╛╨╗╨╕╤З╨║╤Б╤В╨▓╨╛ ╤Б╨╡╨║╤В╨╛╤А╨╛╨▓
         call allocMem
         jc badReadF
         mov ax,segFat
@@ -788,10 +788,10 @@ formDI_CX proc
         jmp formDI_CX1
         endp
         .data
-memoryLo      db 9,1,12,' Недостаточно памяти для проверки вирусов DIR.',10,0
+memoryLo      db 9,1,12,' ╨Э╨╡╨┤╨╛╤Б╤В╨░╤В╨╛╤З╨╜╨╛ ╨┐╨░╨╝╤П╤В╨╕ ╨┤╨╗╤П ╨┐╤А╨╛╨▓╨╡╤А╨║╨╕ ╨▓╨╕╤А╤Г╤Б╨╛╨▓ DIR.',10,0
               db 9,1,12,' Not enoth memory to test the virus DIR.',10,0
               dw 0EE01h,memoryLo
-badDir          db ' - скрыт вирусом BadDir.',0
+badDir          db ' - ╤Б╨║╤А╤Л╤В ╨▓╨╕╤А╤Г╤Б╨╛╨╝ BadDir.',0
                 db ' - destroyed with BadDir.',0
                 dw 0EE01h,badDir
 extTab          dw ?

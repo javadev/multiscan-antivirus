@@ -1,7 +1,7 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; С самого начала этот модуль должен был обходить дерево катклогов, но
-; тут еще подабавлялось чего-то.
+; ╨б ╤Б╨░╨╝╨╛╨│╨╛ ╨╜╨░╤З╨░╨╗╨░ ╤Н╤В╨╛╤В ╨╝╨╛╨┤╤Г╨╗╤М ╨┤╨╛╨╗╨╢╨╡╨╜ ╨▒╤Л╨╗ ╨╛╨▒╤Е╨╛╨┤╨╕╤В╤М ╨┤╨╡╤А╨╡╨▓╨╛ ╨║╨░╤В╨║╨╗╨╛╨│╨╛╨▓, ╨╜╨╛
+; ╤В╤Г╤В ╨╡╤Й╨╡ ╨┐╨╛╨┤╨░╨▒╨░╨▓╨╗╤П╨╗╨╛╤Б╤М ╤З╨╡╨│╨╛-╤В╨╛.
 
 public  printDisk,findIni,findRun,changePath,findPath,getDisk
 public  addDirName,checkFlopy,outLab,mesLab,readLst,findNextP,allocMemAX
@@ -443,7 +443,7 @@ noNew:
         endp
         .data
 pathL           db 'X:\*.*',0
-mesLab          db 1,9,'Метка диска : ',0
+mesLab          db 1,9,'╨Ь╨╡╤В╨║╨░ ╨┤╨╕╤Б╨║╨░ : ',0
                 db 1,9,'Volume label : ',0
                 dw 0EE01h,mesLab
 end

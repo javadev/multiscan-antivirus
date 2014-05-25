@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ‚ ¨Æ§„´Ï ß†≠®¨†•‚·Ô ¢Î¢Æ§Æ¨ ≠† Ì™‡†≠. è‡†¢§† ¢ ‚•™·‚Æ¢Æ¨ ‡•¶®¨•.
+; –≠—Ç–æ—Ç –º–æ–¥—É–ª—å –∑–∞–Ω–∏–º–∞–µ—Ç—Å—è –≤—ã–≤–æ–¥–æ–º –Ω–∞ —ç–∫—Ä–∞–Ω. –ü—Ä–∞–≤–¥–∞ –≤ —Ç–µ–∫—Å—Ç–æ–≤–æ–º —Ä–µ–∂–∏–º–µ.
 ;
 
 public  writeWordInHex,writeHex,writeChar,delToEnd,printHelp,checkEXT
@@ -246,7 +246,7 @@ writeChar proc
         int 21h
         inc ss:curPos
         mov al,1 ptr ss:curPos
-        cmp al,ss:rightBound    ; Øp†¢†Ô £p†≠®Ê†
+        cmp al,ss:rightBound    ; –øp–∞–≤–∞—è –≥p–∞–Ω–∏—Ü–∞
         jb axNormal1
         call print0D
 axNormal1:
@@ -262,7 +262,7 @@ cursorRight proc
         push ax
         inc ss:curPos
         mov al,byte ptr ss:curPos
-        cmp al,ss:rightBound    ; Øp†¢†Ô £p†≠®Ê†
+        cmp al,ss:rightBound    ; –øp–∞–≤–∞—è –≥p–∞–Ω–∏—Ü–∞
         jb axNormal
         call print0D0A
 axNormal:
@@ -272,7 +272,7 @@ axNormal:
 print0D proc
         push ax
         mov al,ss:leftBound
-        mov byte ptr ss:curPos,al        ; ´•¢†Ô £p†≠®Ê†
+        mov byte ptr ss:curPos,al        ; –ª–µ–≤–∞—è –≥p–∞–Ω–∏—Ü–∞
         pop ax
 
         cmp ss:varStd,0
@@ -370,7 +370,7 @@ delToEnd proc
         push ax cx dx di es
         xor ch,ch
         mov cl,byte ptr ss:curPos
-        sub cl,ss:rightBound    ; 80             ; Øp†¢†Ô £p†≠®Ê†
+        sub cl,ss:rightBound    ; 80             ; –øp–∞–≤–∞—è –≥p–∞–Ω–∏—Ü–∞
         neg cl
         cmp ss:varStd,0
         je noExtDel
@@ -606,15 +606,15 @@ exitWml:
         ret
         endp
         .data
-mesTimeTest     db ' Ç‡•¨Ô Ø‡Æ¢•‡™® : ',0
+mesTimeTest     db ' –í—Ä–µ–º—è –ø—Ä–æ–≤–µ—Ä–∫–∏ : ',0
                 db ' Time for test : ',0
                 dw 0EE01h,mesTimeTest
 mesMilSec       db ' ms.',0
 countList       db 10
 extList         db '.COM.EXE.SYS.DRV.OVL.OVR.386.BIN.BAT.PRG'
-mesFull         db ' - ÆË®°™† ß†Ø®·® ‰†©´†-Æ‚Á•‚†.',10,0
+mesFull         db ' - –æ—à–∏–±–∫–∞ –∑–∞–ø–∏—Å–∏ —Ñ–∞–π–ª–∞-–æ—Ç—á–µ—Ç–∞.',10,0
                 db ' - disk full, write error ?',10,0
                 dw 0EE01h,mesFull
 mlCount         dw 0
-tableChar       db '|±≤€≤±|/-\|/-\|\-/|\-/',0
+tableChar       db '|‚ñí‚ñì‚ñà‚ñì‚ñí|/-\|/-\|\-/|\-/',0
 end

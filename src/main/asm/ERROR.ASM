@@ -1,6 +1,6 @@
-
+Ôªø
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ‚ ¨Æ§„´Ï ¢Î¢Æ§®‚ ·ÆÆ°È•≠®Ô Æ° ÆË®°™†Â
+; –≠—Ç–æ—Ç –º–æ–¥—É–ª—å –≤—ã–≤–æ–¥–∏—Ç —Å–æ–æ–±—â–µ–Ω–∏—è –æ–± –æ—à–∏–±–∫–∞—Ö
 ;
 
 public  analizErrDir,analizErrDisk,analizErr,int24Entry
@@ -141,7 +141,7 @@ analizErrDisk proc
         je noErrDisk1
         cmp ah,3
         jne nextDiskErr
-        xor ax,ax               ; ß†È®‚† ß†Ø®·®
+        xor ax,ax               ; –∑–∞—â–∏—Ç–∞ –∑–∞–ø–∏—Å–∏
         call analizErrDir
         pop dx
         ret
@@ -173,35 +173,35 @@ tableErr        equ $
                 dw mesRead          , 3 ; B
                 dw mesTotalError    , 3 ; C
                 dw mesWriteOver     , 3 ; D
-mesSecNotFound  db ' - ·•™‚Æ‡ ≠• ≠†©§•≠',0
+mesSecNotFound  db ' - —Å–µ–∫—Ç–æ—Ä –Ω–µ –Ω–∞–π–¥–µ–Ω',0
                 db ' - sector not found',0
                 dw 0EE01h,mesSecNotFound
-mesWriteProtect db 10,9,9,'  Ç≠®¨†≠®• !!! Ñ®·™ X: ß†È®È•≠ Æ‚ ß†Ø®·®',0
+mesWriteProtect db 10,9,9,'  –í–Ω–∏–º–∞–Ω–∏–µ !!! –î–∏—Å–∫ X: –∑–∞—â–∏—â–µ–Ω –æ—Ç –∑–∞–ø–∏—Å–∏',0
                 db 10,9,9,' Attention !!! Disk X: is write protected',0
                 db 10,9,9
                 dw 0EE01h,mesWriteProtect
-mesTotalError   db ' - ≠•®ß¢•·‚≠†Ô ÆË®°™†',0
+mesTotalError   db ' - –Ω–µ–∏–∑–≤–µ—Å—Ç–Ω–∞—è –æ—à–∏–±–∫–∞',0
                 db ' - unknown error',0
                 dw 0EE01h,mesTotalError
-ioErr           db ' - ÆË®°™† ¢¢Æ§†/¢Î¢Æ§†',0
+ioErr           db ' - –æ—à–∏–±–∫–∞ –≤–≤–æ–¥–∞/–≤—ã–≤–æ–¥–∞',0
                 db ' - input/output error',0
                 dw 0EE01h,ioErr
-diskNotReady    db 10,9,9,9,'  ì·‚‡Æ©·‚¢Æ X: ≠• £Æ‚Æ¢Æ',0
+diskNotReady    db 10,9,9,9,'  –£—Å—Ç—Ä–æ–π—Å—Ç–≤–æ X: –Ω–µ –≥–æ—Ç–æ–≤–æ',0
                 db 10,9,9,9,'    Device X: not ready',0
                 dw 0EE01h,diskNotReady
-mesDataErr      db ' - ÆË®°™† §†≠≠ÎÂ',0
+mesDataErr      db ' - –æ—à–∏–±–∫–∞ –¥–∞–Ω–Ω—ã—Ö',0
                 db ' - data error',0
                 dw 0EE01h,mesDataErr
-mesWrite        db ' - ÆË®°™† ß†Ø®·®',0
+mesWrite        db ' - –æ—à–∏–±–∫–∞ –∑–∞–ø–∏—Å–∏',0
                 db ' - write error',0
                 dw 0EE01h,mesWrite
-mesRead         db ' - ÆË®°™† Á‚•≠®Ô',0
+mesRead         db ' - –æ—à–∏–±–∫–∞ —á—Ç–µ–Ω–∏—è',0
                 db ' - read error',0
                 dw 0EE01h,mesRead
-mesWriteOver    db ' - ≠•§Æ·‚†‚ÆÁ≠Æ ¨•·‚† ≠† §®·™•',0
+mesWriteOver    db ' - –Ω–µ–¥–æ—Å—Ç–∞—Ç–æ—á–Ω–æ –º–µ—Å—Ç–∞ –Ω–∞ –¥–∏—Å–∫–µ',0
                 db ' - disk full. Write error',0
                 dw 0EE01h,mesWriteOver
-mesClBad        db ' - ÆË®°™† ß†™‡Î‚®Ô ‰†©´†',10,0
+mesClBad        db ' - –æ—à–∏–±–∫–∞ –∑–∞–∫—Ä—ã—Ç–∏—è —Ñ–∞–π–ª–∞',10,0
                 db ' - file close error',10,0
                 dw 0EE01h,mesClBad
 end

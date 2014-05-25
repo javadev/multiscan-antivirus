@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ ·´„¶®´Æ §´Ô §Æ°†¢´•≠®Ô ·®£≠†‚„‡ ¢ Ø†Ô¨‚Ï, ≠Æ ¨≠Æ£Æ• °Î´Æ §Æ°†¢´•≠Æ.
+; –≠—Ç–æ —Å–ª—É–∂–∏–ª–æ –¥–ª—è –¥–æ–±–∞–≤–ª–µ–Ω–∏—è —Å–∏–≥–Ω–∞—Ç—É—Ä –≤ –ø–∞—è–º—Ç—å, –Ω–æ –º–Ω–æ–≥–æ–µ –±—ã–ª–æ –¥–æ–±–∞–≤–ª–µ–Ω–æ.
 ;
 
 public  insertCE,insertR,insertBoot,insertName,complete,openSig
@@ -81,7 +81,7 @@ notFound:
 getCXDX proc
         push ax
         mov ax,si
-        mov ch,al       ; §Æ‡Æ¶™† ¢ ch
+        mov ch,al       ; –¥–æ—Ä–æ–∂–∫–∞ –≤ ch
         push cx
         mov cl,4
         shl ah,cl       ; ah <<= 4
@@ -92,12 +92,12 @@ getCXDX proc
         not al
         push ax
         and ah,al
-        or dh,ah        ; ØÆ¢•‡Â≠Æ·‚Ï ¢ dh
+        or dh,ah        ; –ø–æ–≤–µ—Ä—Ö–Ω–æ—Å—Ç—å –≤ dh
         pop ax
         shl ah,1
         shl ah,1
         and ah,al
-        or cl,ah        ; ·•™‚Æ‡ ¢ cl
+        or cl,ah        ; —Å–µ–∫—Ç–æ—Ä –≤ cl
         pop ax
         ret
         endp
@@ -188,7 +188,7 @@ writePol proc
         shr ax,1
         jz writeSc2
         mov color,01110000b
-        mov dl,'±'
+        mov dl,'‚ñí'
         push ax
 writeSc:
         call writeChar
@@ -200,7 +200,7 @@ writeSc2:
         jz exitSc
         neg ax
         mov color,01000000b
-        mov dl,'∞'
+        mov dl,'‚ñë'
 writeSc3:
         call writeChar
         dec al
@@ -654,18 +654,18 @@ moveName proc
 
         xor ax,ax
 
-        call moveSig    ; ·™ÆØ®‡Æ¢†‚Ï ®¨•≠†
+        call moveSig    ; —Å–∫–æ–ø–∏—Ä–æ–≤–∞—Ç—å –∏–º–µ–Ω–∞
 
         mov ax,1
 
         mov si,startCE
         mov di,pointerCE
 
-        call moveSig   ; ·™ÆØ®‡Æ¢†‚Ï CE
+        call moveSig   ; —Å–∫–æ–ø–∏—Ä–æ–≤–∞—Ç—å CE
 
         mov di,110h
-        call fillBor    ; ß†ØÆ´≠®‚Ï ≠†Á†´Æ ® ™Æ≠•Ê
-        call setNameCE  ; ≠†·‚‡Æ®‚Ï ·®£≠†‚„‡Î CE
+        call fillBor    ; –∑–∞–ø–æ–ª–Ω–∏—Ç—å –Ω–∞—á–∞–ª–æ –∏ –∫–æ–Ω–µ—Ü
+        call setNameCE  ; –Ω–∞—Å—Ç—Ä–æ–∏—Ç—å —Å–∏–≥–Ω–∞—Ç—É—Ä—ã CE
 
         call fillTit
 
@@ -861,7 +861,7 @@ moveSig proc
         mov di,newPoint
         push ds
         mov ds,sigSeg
-        mov dx,di               ;≠†Á†´Æ ·®£≠†‚„‡
+        mov dx,di               ;–Ω–∞—á–∞–ª–æ —Å–∏–≥–Ω–∞—Ç—É—Ä
         rep movsb
         pop ds
         or ax,ax
@@ -869,7 +869,7 @@ moveSig proc
         mov ax,-1
         stosw
         stosw
-        mov ax,di               ;Â¢Æ·‚ ·®£≠†‚„‡
+        mov ax,di               ;—Ö–≤–æ—Å—Ç —Å–∏–≥–Ω–∞—Ç—É—Ä
         add di,4
 noSet_1:
         mov newPoint,di
@@ -881,10 +881,10 @@ complete proc
         push ax dx si di
         call moveName           ;*
 
-        mov si,offset iniSigOff ; si „™†ßÎ¢†•‚ ≠† Ø•p•¨•≠≠„Ó ¢ cs ·Æ ·‚†pÎ¨
-                                ; ·¨•È•≠®•¨
-        mov di,pointerCE        ; ¢ di Âp†≠®‚·Ô „™†ß†‚•´Ï ≠† Â¢Æ·‚ ·®£≠†‚„p
-        mov dx,startCE          ; ¢ dx ·‚†pÆ• ·¨•È•≠®• ≠†Á†´† ·®£≠†‚„p
+        mov si,offset iniSigOff ; si —É–∫–∞–∑—ã–≤–∞–µ—Ç –Ω–∞ –ø–µp–µ–º–µ–Ω–Ω—É—é –≤ cs —Å–æ —Å—Ç–∞p—ã–º
+                                ; —Å–º–µ—â–µ–Ω–∏–µ–º
+        mov di,pointerCE        ; –≤ di —Öp–∞–Ω–∏—Ç—Å—è —É–∫–∞–∑–∞—Ç–µ–ª—å –Ω–∞ —Ö–≤–æ—Å—Ç —Å–∏–≥–Ω–∞—Ç—Ép
+        mov dx,startCE          ; –≤ dx —Å—Ç–∞p–æ–µ —Å–º–µ—â–µ–Ω–∏–µ –Ω–∞—á–∞–ª–∞ —Å–∏–≥–Ω–∞—Ç—Ép
         call complSig
         mov pointerCE,di
 
@@ -898,13 +898,13 @@ complSig proc
         push ax es
         mov es,sigSeg
         mov ax,-1
-        stosw           ; ØÆ·‚†¢®‚Ï -1
-        stosw           ; ØÆ·‚†¢®‚Ï -1
+        stosw           ; –ø–æ—Å—Ç–∞–≤–∏—Ç—å -1
+        stosw           ; –ø–æ—Å—Ç–∞–≤–∏—Ç—å -1
         xchg dx,ax
-        xchg ax,[si] ; ØÆ¨•≠Ô‚Ï ¨•·‚†¨® ·‚†pÎ© ® ≠Æ¢Î© „™†ß†‚•´®
+        xchg ax,[si] ; –ø–æ–º–µ–Ω—è—Ç—å –º–µ—Å—Ç–∞–º–∏ —Å—Ç–∞p—ã–π –∏ –Ω–æ–≤—ã–π —É–∫–∞–∑–∞—Ç–µ–ª–∏
         stosw
         mov ax,es
-        xchg ax,[si+2] ; ØÆ¨•≠Ô‚Ï ¨•·‚†¨® ·‚†pÎ© ® ≠Æ¢Î© „™†ß†‚•´®
+        xchg ax,[si+2] ; –ø–æ–º–µ–Ω—è—Ç—å –º–µ—Å—Ç–∞–º–∏ —Å—Ç–∞p—ã–π –∏ –Ω–æ–≤—ã–π —É–∫–∞–∑–∞—Ç–µ–ª–∏
         stosw
         pop es ax
 noCompl:
@@ -1105,21 +1105,21 @@ lenOk:
         ret
         endp
         .data
-mesSigOver      db 10,'è•‡•ØÆ´≠•≠®• Ø‡® ß†£‡„ß™• ·®£≠†‚„‡.',10,0
+mesSigOver      db 10,'–ü–µ—Ä–µ–ø–æ–ª–Ω–µ–Ω–∏–µ –ø—Ä–∏ –∑–∞–≥—Ä—É–∑–∫–µ —Å–∏–≥–Ω–∞—Ç—É—Ä.',10,0
                 db 10,'Memory overflow',10,0
                 dw 0EE01h,mesSigOver
-strBeg          db 13,10,'   <<<  ÑÆØÆ´≠•≠®• ™ †≠®¢®‡„·≠Æ© °†ß• Ø‡Æ£‡†¨¨Î MultiScan >>>'
-                db 13,10,'                      §´Ô ¢•‡·®® 2.5+.',13,10,13,10
+strBeg          db 13,10,'   <<<  –î–æ–ø–æ–ª–Ω–µ–Ω–∏–µ –∫ –∞–Ω–∏–≤–∏—Ä—É—Å–Ω–æ–π –±–∞–∑–µ –ø—Ä–æ–≥—Ä–∞–º–º—ã MultiScan >>>'
+                db 13,10,'                      –¥–ª—è –≤–µ—Ä—Å–∏–∏ 2.5+.',13,10,13,10
                 db 'BEGIN:',13,10
 lenBegS         equ $-strBeg
 strEnd          db 13,10,'END.'
 lenEndS         equ $-strEnd
-mesDecod        db 10,' èÆ§Æ¶§®‚•, ØÆ™† ‡†·Ë®‰‡„•‚·Ô ¶•·‚™®© §®·™ ...',10,0
+mesDecod        db 10,' –ü–æ–¥–æ–∂–¥–∏—Ç–µ, –ø–æ–∫–∞ —Ä–∞—Å—à–∏—Ñ—Ä—É–µ—Ç—Å—è –∂–µ—Å—Ç–∫–∏–π –¥–∏—Å–∫ ...',10,0
                 db 10,' Please wait, while your HD will be decoded ...',10,0
                 dw 0EE01h,mesDecod
 mesSk           db '( ',0
 mesKb           db ' Kb )',0
-mesCreat        db 'ëÆß§†≠ ‰†©´ : ',0
+mesCreat        db '–°–æ–∑–¥–∞–Ω —Ñ–∞–π–ª : ',0
                 db 'Created file : ',0
                 dw 0EE01h,mesCreat
 sigName         db '*.sig',0

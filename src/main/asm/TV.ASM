@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; í†°´®Ê† ¢®‡„·Æ¢.
+; –¢–∞–±–ª–∏—Ü–∞ –≤–∏—Ä—É—Å–æ–≤.
 ;
 _COM    equ 1
 _EXE    equ 2

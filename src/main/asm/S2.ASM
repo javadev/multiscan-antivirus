@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ ÆÁ•≠Ï ™‡„‚Æ© ¨Æ§„´Ï. ëÆß§†•‚ ‰†©´ Æ‚Á•‚† ® ¨≠Æ£Æ ¢·•£Æ.
+; –≠—Ç–æ –æ—á–µ–Ω—å –∫—Ä—É—Ç–æ–π –º–æ–¥—É–ª—å. –°–æ–∑–¥–∞–µ—Ç —Ñ–∞–π–ª –æ—Ç—á–µ—Ç–∞ –∏ –º–Ω–æ–≥–æ –≤—Å–µ–≥–æ.
 ;
 
 public  bye,getParam,moveIPCS,getIPCS,writeHead,closeRap,printFeng
@@ -716,16 +716,16 @@ writeHead proc
         ret
         endp
         .data
-memoryErr       db 10,9,9,'É*** Insufficient memory to run MultiScan ***',10,0
-mesReport       db 13,10,'                    <<< é‚Á•‚ Æ Ø‡Æ¢•§•≠≠Æ¨ ‚•·‚'
-                db '®‡Æ¢†≠®® >>>'
-                db 13,10,'                             †≠‚®¢®‡„·Æ¨ MultiScan'
-                db 13,10,13,10,'Ñ†‚† ·Æß§†≠®Ô Æ‚Á•‚† : ',0
+memoryErr       db 10,9,9,'–ì*** Insufficient memory to run MultiScan ***',10,0
+mesReport       db 13,10,'                    <<< –û—Ç—á–µ—Ç –æ –ø—Ä–æ–≤–µ–¥–µ–Ω–Ω–æ–º —Ç–µ—Å—Ç'
+                db '–∏—Ä–æ–≤–∞–Ω–∏–∏ >>>'
+                db 13,10,'                             –∞–Ω—Ç–∏–≤–∏—Ä—É—Å–æ–º MultiScan'
+                db 13,10,13,10,'–î–∞—Ç–∞ —Å–æ–∑–¥–∞–Ω–∏—è –æ—Ç—á–µ—Ç–∞ : ',0
                 db 13,10,'                  <<< Scanning result by antivirus '
                 db 'MultiScan >>>'
                 db 13,10,13,10,'Creation time : ',0
                 dw 0EE01h,mesReport
-mesComSt        db 13,10,'äÆ¨†≠§≠†Ô ·‚‡Æ™† Ø‡® ß†Ø„·™• (',0
+mesComSt        db 13,10,'–ö–æ–º–∞–Ω–¥–Ω–∞—è —Å—Ç—Ä–æ–∫–∞ –ø—Ä–∏ –∑–∞–ø—É—Å–∫–µ (',0
                 db 13,10,'Command string (',0
                 dw 0EE01h,mesComSt
 mesStrel        db ') ->',0

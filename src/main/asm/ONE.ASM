@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; åÆ§„´Ï ØÆß¢Æ´®´ ´•Á®‚Ï ¢®‡„·Î OneHalf 3544,3570,3666.
+; –ú–æ–¥—É–ª—å –ø–æ–∑–≤–æ–ª–∏–ª –ª–µ—á–∏—Ç—å –≤–∏—Ä—É—Å—ã OneHalf 3544,3570,3666.
 
 public  oneCure,infect
 extrn   writeDec:near,who:near,readF:near,writeF:near,setPos1:near,beep:near
@@ -344,10 +344,10 @@ setShort:
         jmp short withNear
         endp
 setLong:
-        lodsw           ; ·Á®‚†‚Ï ·¨•È•≠®• §´Ô jmp near
+        lodsw           ; —Å—á–∏—Ç–∞—Ç—å —Å–º–µ—â–µ–Ω–∏–µ –¥–ª—è jmp near
 withNear:
         xchg dx,si      ; dx=si
-        sub dx,si       ; ¢ dx - §´®≠† ™Æ¨†≠§Î
+        sub dx,si       ; –≤ dx - –¥–ª–∏–Ω–∞ –∫–æ–º–∞–Ω–¥—ã
         test ah,80h
         jz addLong
         neg ax
@@ -401,7 +401,7 @@ tableOne        equ $
                 dw check9
                 dw check10
 endOneTab       equ $
-infect          db ' - °Æ´•≠ OneHalf.',0
+infect          db ' - –±–æ–ª–µ–Ω OneHalf.',0
                 db ' - infected OneHalf.',0
                 dw 0EE01h,infect
 tablePos        dw ?

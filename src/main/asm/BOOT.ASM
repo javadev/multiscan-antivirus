@@ -1,6 +1,6 @@
 
 ; Copyright (c) 1998, Written by VALENTIN KOLESNIKOV, Kiev, Ukraine.
-; ù‚Æ‚ ¨Æ§„´® Ø‡Æ¢•‡Ô•‚ ß†£‡„ßÆÁ≠Î• ·•™‚Æ‡†.
+; –≠—Ç–æ—Ç –º–æ–¥—É–ª–∏ –ø—Ä–æ–≤–µ—Ä—è–µ—Ç –∑–∞–≥—Ä—É–∑–æ—á–Ω—ã–µ —Å–µ–∫—Ç–æ—Ä–∞.
 ;
 
 public  boot,checkMbr,mesWasSavedB,getFileName,mesStInBoot,mesStBcured
@@ -123,12 +123,12 @@ checkMbr proc
         mov device,'C'
         mov dx,80h
 nextVint:
-        call checkHDD           ; ØpÆ¢•p®‚Ï ≠†´®Á®• 1-£Æ §®·™†
+        call checkHDD           ; –øp–æ–≤–µp–∏—Ç—å –Ω–∞–ª–∏—á–∏–µ 1-–≥–æ –¥–∏—Å–∫–∞
         jc noVint
         push dx
         and dl,11b
         add dl,'1'
-        call checkMbrX          ; ØpÆ¢•p®‚Ï MBR ® Boot
+        call checkMbrX          ; –øp–æ–≤–µp–∏—Ç—å MBR –∏ Boot
         pop dx
         jc noVint
         inc device
@@ -942,61 +942,61 @@ callWriteF proc
         ret
         endp
         .data
-mesMbr          db 'è‡Æ¢•‡ÔÓ MASTER BOOT RECORD HDD',0
+mesMbr          db '–ü—Ä–æ–≤–µ—Ä—è—é MASTER BOOT RECORD HDD',0
                 db 'Is checked up MASTER BOOT RECORD HDD',0
                 dw 0EE01h,mesMbr
-mesBootV        db 'è‡Æ¢•‡ÔÓ ACTIVE BOOT SECTOR HDD',0
+mesBootV        db '–ü—Ä–æ–≤–µ—Ä—è—é ACTIVE BOOT SECTOR HDD',0
                 db 'Is checked up MASTER BOOT RECORD HDD',0
                 dw 0EE01h,mesBootV
-mesBoot         db 'è‡Æ¢•‡ÔÓ BOOT SECTOR',0
+mesBoot         db '–ü—Ä–æ–≤–µ—Ä—è—é BOOT SECTOR',0
                 db 'Is checked up BOOT SECTOR',0
                 dw 0EE01h,mesBoot
-infMbr          db ' - ß†‡†¶•≠ ',0
+infMbr          db ' - –∑–∞—Ä–∞–∂–µ–Ω ',0
                 db ' - infected with ',0
                 dw 0EE01h,mesBoot
-curOk           db ' àëñÖãÖç.',10,0
+curOk           db ' –ò–°–¶–ï–õ–ï–ù.',10,0
                 db ' CURED.',10,0
                 dw 0EE01h,mesBoot
-stdMbr          db ' - Ì‚Æ ·‚†≠§†‡‚≠Î© ',0
+stdMbr          db ' - —ç—Ç–æ —Å—Ç–∞–Ω–¥–∞—Ä—Ç–Ω—ã–π ',0
                 db ' - this is standart ',0
                 dw 0EE01h,stdMbr
-mesNoStdBoot    db 'ù‚Æ‚ ß†£‡„ßÆÁ≠Î© ·•™‚Æ‡ - ≠•·‚†≠§†‡‚≠Î© ! ',10,0
+mesNoStdBoot    db '–≠—Ç–æ—Ç –∑–∞–≥—Ä—É–∑–æ—á–Ω—ã–π —Å–µ–∫—Ç–æ—Ä - –Ω–µ—Å—Ç–∞–Ω–¥–∞—Ä—Ç–Ω—ã–π ! ',10,0
                 db 'This loading sector - non-standard! ',10,0
                 dw 0EE01h,mesNoStdBoot
-mesSaveFBoot    db 'ëÆÂ‡†≠®‚Ï •£Æ ¢ ‰†©´•',0
+mesSaveFBoot    db '–°–æ—Ö—Ä–∞–Ω–∏—Ç—å –µ–≥–æ –≤ —Ñ–∞–π–ª–µ',0
                 db 'To save him in file',0
                 dw 0EE01h,mesSaveFBoot
-mesWasSavedB    db ' ëÆÂ‡†≠•≠ ¢ ‰†©´• ',0
+mesWasSavedB    db ' –°–æ—Ö—Ä–∞–Ω–µ–Ω –≤ —Ñ–∞–π–ª–µ ',0
                 db ' Is saved in file ',0
                 dw 0EE01h,mesWasSavedB
-mesStInBoot     db 9,'Ç≠®¨†≠®• !!! Ñ†≠≠Î© ß†£‡„ßÆÁ≠Î© ·•™‚Æ‡ ¨†·™®‡„•‚·Ô ≠•®ß¢•·‚≠Æ©'
-                db 10,'    ‡•ß®§•≠‚≠Æ© Ø‡Æ£‡†¨¨Æ©. á†Ø®·†‚Ï ØÆ§·‚†¢´Ô•¨Î© ·•™‚Æ‡',0
+mesStInBoot     db 9,'–í–Ω–∏–º–∞–Ω–∏–µ !!! –î–∞–Ω–Ω—ã–π –∑–∞–≥—Ä—É–∑–æ—á–Ω—ã–π —Å–µ–∫—Ç–æ—Ä –º–∞—Å–∫–∏—Ä—É–µ—Ç—Å—è –Ω–µ–∏–∑–≤–µ—Å—Ç–Ω–æ–π'
+                db 10,'    —Ä–µ–∑–∏–¥–µ–Ω—Ç–Ω–æ–π –ø—Ä–æ–≥—Ä–∞–º–º–æ–π. –ó–∞–ø–∏—Å–∞—Ç—å –ø–æ–¥—Å—Ç–∞–≤–ª—è–µ–º—ã–π —Å–µ–∫—Ç–æ—Ä',0
                 db 9,'Attention !!! This boot sector hided is unknown rezident'
                 db 10,9,'       program. Write the boot from memory',0
                 dw 0EE01h,mesStInBoot
-mesStBcured     db ' ÇéëëíÄçéÇãÖç.',10,0
+mesStBcured     db ' –í–û–°–°–¢–ê–ù–û–í–õ–ï–ù.',10,0
                 db ' IS RESTORED.',10,0
                 dw 0EE01h,mesStBcured
-mesStoreBoot    db 'CMOS, MBR ® BOOT ·ÆÂ‡†≠•≠Î ¢ ‰†©´• ',0
+mesStoreBoot    db 'CMOS, MBR –∏ BOOT —Å–æ—Ö—Ä–∞–Ω–µ–Ω—ã –≤ —Ñ–∞–π–ª–µ ',0
                 db 'CMOS, MBR & BOOT stored into file ',0
                 dw 0EE01h,mesStoreBoot
-mesRestorBoot   db 'CMOS, MBR ® BOOT ¢Æ··‚†≠Æ¢´•≠Î ®ß ‰†©´† ',0
+mesRestorBoot   db 'CMOS, MBR –∏ BOOT –≤–æ—Å—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω—ã –∏–∑ —Ñ–∞–π–ª–∞ ',0
                 db 'CMOS, MBR & BOOT is restored into file ',0
                 dw 0EE01h,mesRestorBoot
-mesBnotFound    db 'î†©´ ≠• ≠†©§•≠ : ',0
+mesBnotFound    db '–§–∞–π–ª –Ω–µ –Ω–∞–π–¥–µ–Ω : ',0
                 db 'File not found : ',0
                 dw 0EE01h,mesBnotFound
-mesBchSumErr    db 'ç•¢•‡≠Î© ‰Æ‡¨†‚ ‰†©´† ',0
+mesBchSumErr    db '–ù–µ–≤–µ—Ä–Ω—ã–π —Ñ–æ—Ä–º–∞—Ç —Ñ–∞–π–ª–∞ ',0
                 db 'File is corrupt ',0
                 dw 0EE01h,mesBchSumErr
-mesCmosErr      db 'ç•¢Æß¨Æ¶≠Æ ¢Æ··‚†≠Æ¢®‚Ï CMOS.',10,0
+mesCmosErr      db '–ù–µ–≤–æ–∑–º–æ–∂–Ω–æ –≤–æ—Å—Å—Ç–∞–Ω–æ–≤–∏—Ç—å CMOS.',10,0
                 db 'Imposible restore CMOS.',10,0
                 dw 0EE01h,mesCmosErr
-mesMBError      db 'ç•¢Æß¨Æ¶≠Æ ¢Æ··‚†≠Æ¢®‚Ï MBR ® BOOT ®ß ',0
+mesMBError      db '–ù–µ–≤–æ–∑–º–æ–∂–Ω–æ –≤–æ—Å—Å—Ç–∞–Ω–æ–≤–∏—Ç—å MBR –∏ BOOT –∏–∑ ',0
                 db 'Imposible restore MBR & BOOT into ',0
                 dw 0EE01h,mesMBError
-mesSaveCMB      db 'ëÆÂ‡†≠®‚Ï CMOS, MBR ® BOOT ¢ ‰†©´•',0
-                db 'Store  CMOS, MBR ® BOOT into file',0
+mesSaveCMB      db '–°–æ—Ö—Ä–∞–Ω–∏—Ç—å CMOS, MBR –∏ BOOT –≤ —Ñ–∞–π–ª–µ',0
+                db 'Store  CMOS, MBR –∏ BOOT into file',0
                 dw 0EE01h,mesSaveCMB
 titleCMB        db 'MultiScan (c) 1995-97 CMOS, MBR & BOOT data.',13,10,0
 fileNameB       db 'boot0000.dat',0

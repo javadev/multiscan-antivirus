@@ -1,8 +1,8 @@
 @REM Copyright (c) 1998, Written by VALENTIN KOLESNIKOV
 @ECHO OFF
 
-REM С помощью этого файла вы сможете скомпилировать
-REM антивирус MultiScan
+REM ╨б ╨┐╨╛╨╝╨╛╤Й╤М╤О ╤Н╤В╨╛╨│╨╛ ╤Д╨░╨╣╨╗╨░ ╨▓╤Л ╤Б╨╝╨╛╨╢╨╡╤В╨╡ ╤Б╨║╨╛╨╝╨┐╨╕╨╗╨╕╤А╨╛╨▓╨░╤В╤М
+REM ╨░╨╜╤В╨╕╨▓╨╕╤А╤Г╤Б MultiScan
 
 ECHO ON
 cd src/main/asm
