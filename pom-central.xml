@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.github.javadev</groupId>
+  <artifactId>multiscan-antivirus</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>Antivirus project for DOS, written in assembler program language</name>
+  <description>The antivirus project for DOS, written in assembler program language, still works on my Win7 PC</description>
+  <url>https://github.com/javadev/multiscan-antivirus</url>
+  
+  <developers>
+    <developer>
+      <name>Valentyn Kolesnikov</name>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/javadev/multiscan-antivirus.git</connection>
+    <developerConnection>scm:git:git://github.com/javadev/multiscan-antivirus.git</developerConnection>
+    <url>https://github.com/javadev/multiscan-antivirus</url>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/javadev/multiscan-antivirus</url>
+  </ciManagement>
+
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/javadev/multiscan-antivirus/issues</url>
+  </issueManagement>
+
+  <build>
+    <resources>
+      <resource>
+          <filtering>false</filtering>
+          <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+          <filtering>false</filtering>
+          <directory>src/main/asm</directory>
+          <includes>
+              <include>**</include>
+          </includes>
+          <excludes>
+              <exclude>**/*.OBJ</exclude>
+          </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+         <artifactId>maven-antrun-plugin</artifactId>
+         <executions>
+           <execution>
+             <phase>prepare-package</phase>
+             <configuration>
+               <tasks>
+                   <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                       <arg line="/c ${basedir}/tasm.exe *.asm /m9/z"/>
+                   </exec>
+                   <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                       <arg line="/c ${basedir}/tlink.exe @files"/>
+                   </exec>
+                   <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                       <arg line="/c ${basedir}/tlink.exe /t MSTSR.OBJ"/>
+                   </exec>
+                   <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                       <arg line="/c ${basedir}/ucexe.exe mscan.exe"/>
+                   </exec>
+                   <exec dir="${basedir}/target/classes" executable="cmd" failifexecutionfails="false" >
+                       <arg line="/c ${basedir}/mscan.exe mscan.exe /v+"/>
+                   </exec>
+                   <delete>
+                       <fileset dir="${basedir}/target/classes" includes="**/*.ASM **/*.OBJ **/*.MAP **/FILES **/MSCAN.~XE"/>
+                   </delete>
+                   <copy todir="${basedir}/target/classes">
+                       <fileset dir="${basedir}/src/main/doc"/>
+                   </copy>
+                   <zip destfile="${basedir}/target/mscan.zip"
+                       basedir="${basedir}/target/classes" />
+                   <copy  file="${basedir}/target/mscan.zip" tofile="${basedir}/mscan.zip"/>
+               </tasks>
+             </configuration>
+             <goals>
+               <goal>run</goal>
+             </goals>
+           </execution>
+         </executions>
+       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <executions>
+              <execution>
+                  <id>attach-sources</id>
+                  <goals>
+                      <goal>jar</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.1</version>
+          <executions>
+              <execution>
+                  <id>attach-sources</id>
+                  <goals>
+                      <goal>jar</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.4</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.4</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>  
+</project>
