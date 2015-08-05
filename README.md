@@ -37,7 +37,6 @@ Idiv, то при некоторых видах адресации вне тек
 
 Валентин Колесников.
 
-mailto:javadev75@gmail.com
 http://linkedin.com/in/valyakol
 
 [![Screen short](https://raw.github.com/javadev/multiscan-antivirus/master/multiscan.png)](https://github.com/javadev/multiscan-antivirus)
